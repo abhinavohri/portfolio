@@ -1,0 +1,26 @@
+{
+  "name": "Abhinav Ohri",
+  "tagline": "Full Stack Developer",
+  "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
+  "profilePic": "/_.jpeg",
+  "techStack": [
+    "nextjs",
+    "react",
+    "javascript",
+    "nodejs",
+    "python",
+    "typescript"
+  ],
+  "socials": [
+    {
+      "platform": "github",
+      "url": "https://github.com/yourusername"
+    },
+    {
+      "platform": "twitter",
+      "url": "https://twitter.com/yourusername"
+    }
+  ],
+  "resumeUrl": "/resume.pdf",
+  "githubUrl": "https://github.com/yourusername"
+}
