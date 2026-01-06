@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
   --background: #ffffff;
@@ -13,6 +13,8 @@
   --gradient-end: #a855f7;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.1);
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 [data-theme="dark"] {
@@ -41,7 +43,8 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -101,17 +104,26 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 2rem;
   padding-top: 6rem;
+  padding-bottom: 4rem;
 }
 
 .main {
-  max-width: 680px;
+  max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 3rem;
+}
+
+/* Section titles */
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-heading);
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
 }
 
 /* Profile Section */
@@ -138,7 +150,8 @@ a {
 
 .name {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: var(--font-heading);
   margin: 0;
   color: var(--foreground);
 }
@@ -177,49 +190,72 @@ a {
   gap: 0.75rem;
 }
 
-.techItem {
-  display: flex;
+/* TechIcon component styles */
+.techIcon {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   transition: all 0.2s ease;
-  position: relative;
 }
 
-.techItem:hover {
+.techIcon:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
 }
 
-.techItem img {
-  width: 26px;
-  height: 26px;
+.techIcon img {
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
-.techItem .tooltip {
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--surface);
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-  border: 1px solid var(--border);
+.techIcon .techLabel {
+  font-size: 0.85rem;
   color: var(--foreground);
+  font-weight: 400;
 }
 
-.techItem:hover .tooltip {
-  opacity: 1;
+/* Compact variant - icon only */
+.techIconCompact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.techIconCompact img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Badge variant - for experience section */
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.techBadge img {
+  width: 14px;
+  height: 14px;
+}
+
+.techBadge .techLabel {
+  font-size: 0.75rem;
+  color: var(--foreground);
 }
 
 /* CTA Buttons */
@@ -301,13 +337,239 @@ a {
   height: 20px;
 }
 
+/* Experience Section */
+.experienceSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experienceItem {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.experienceItem:hover {
+  border-color: var(--accent);
+}
+
+.experienceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.experienceCompany {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.companyName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #22c55e;
+}
+
+.currentDot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.experienceDates {
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.experienceRole {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.experienceTools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.toolBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--foreground);
+}
+
+.toolBadge img {
+  width: 14px;
+  height: 14px;
+}
+
+.experienceHighlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experienceHighlights li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.experienceHighlights li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* Projects Section */
+.projectsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.projectCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.projectCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.projectCover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: var(--border);
+}
+
+.projectContent {
+  padding: 1.25rem;
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.projectName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.projectLinks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.projectLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+.projectLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.projectLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+.projectDescription {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.projectTechStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projectTechItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.projectTechItem img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .navbar {
-    left: 1rem;
-    right: 1rem;
-    transform: none;
-    width: auto;
+    padding: 0.75rem 1rem;
   }
 
   .profile {
@@ -331,5 +593,27 @@ a {
 
   .socials {
     justify-content: center;
+  }
+
+  .experienceHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .experienceDates {
+    order: -1;
+  }
+
+  .projectCover {
+    height: 160px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide labels on experience tools for mobile */
+  .expToolBadge .techLabel {
+    display: none;
   }
 }

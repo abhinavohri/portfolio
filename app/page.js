@@ -1,37 +1,6 @@
 import Image from 'next/image';
 import data from '@/data/data.json';
-
-// Tech stack icon mappings using devicons CDN
-const techIcons = {
-  react: { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  nextjs: { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-  javascript: { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  typescript: { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-  nodejs: { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  python: { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  html5: { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  css3: { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  tailwindcss: { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-  mongodb: { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  postgresql: { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  git: { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-  docker: { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  figma: { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-  go: { name: 'Go', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg' },
-  rust: { name: 'Rust', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg' },
-  java: { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  swift: { name: 'Swift', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' },
-  kotlin: { name: 'Kotlin', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg' },
-  flutter: { name: 'Flutter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
-  firebase: { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
-  aws: { name: 'AWS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-  graphql: { name: 'GraphQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
-  mysql: { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-  redis: { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-  vue: { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
-  angular: { name: 'Angular', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
-  svelte: { name: 'Svelte', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg' },
-};
+import TechIcon from '@/components/TechIcon';
 
 // Social icons mapping
 const socialIcons = {
@@ -77,21 +46,13 @@ export default function Home() {
           <p>{data.description}</p>
         </section>
 
-        {/* Tech Stack Section */}
+        {/* Tech Stack Section - with labels */}
         <section className="techStack">
           <h2 className="techStackTitle">Tech Stack</h2>
           <div className="techStackGrid">
-            {data.techStack.map((tech) => {
-              const techData = techIcons[tech.toLowerCase()];
-              if (!techData) return null;
-              return (
-                <div key={tech} className="techItem">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={techData.icon} alt={techData.name} />
-                  <span className="tooltip">{techData.name}</span>
-                </div>
-              );
-            })}
+            {data.techStack.map((tech) => (
+              <TechIcon key={tech} tech={tech} showLabel={true} />
+            ))}
           </div>
         </section>
 
@@ -103,11 +64,11 @@ export default function Home() {
             </svg>
             Resume
           </a>
-          <a href={data.githubUrl} className="ctaButton secondary" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          <a href={`mailto:${data.email}`} className="ctaButton secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            GitHub
+            Contact Me
           </a>
         </section>
 
@@ -130,6 +91,119 @@ export default function Home() {
                 </a>
               );
             })}
+          </section>
+        )}
+
+        {/* Experience Section */}
+        {data.experience && data.experience.length > 0 && (
+          <section className="experienceSection">
+            <h2 className="sectionTitle">Experience</h2>
+            <div className="experienceList">
+              {data.experience.map((exp, index) => (
+                <div key={index} className="experienceItem">
+                  <div className="experienceHeader">
+                    <div className="experienceCompany">
+                      <span className="companyName">{exp.company}</span>
+                      {exp.current && (
+                        <span className="currentBadge">
+                          <span className="currentDot"></span>
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <span className="experienceDates">
+                      {exp.startDate} — {exp.endDate || 'Present'}
+                    </span>
+                  </div>
+                  <p className="experienceRole">{exp.role}</p>
+                  {exp.tools && exp.tools.length > 0 && (
+                    <div className="experienceTools">
+                      {exp.tools.map((tool) => (
+                        <TechIcon 
+                          key={tool} 
+                          tech={tool} 
+                          showLabel={true} 
+                          variant="badge"
+                          className="expToolBadge"
+                        />
+                      ))}
+                    </div>
+                  )}
+                  {exp.highlights && exp.highlights.length > 0 && (
+                    <ul className="experienceHighlights">
+                      {exp.highlights.map((highlight, hIndex) => (
+                        <li key={hIndex}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Projects Section */}
+        {data.projects && data.projects.length > 0 && (
+          <section className="projectsSection">
+            <h2 className="sectionTitle">Projects</h2>
+            <div className="projectsGrid">
+              {data.projects.map((project, index) => (
+                <div key={index} className="projectCard">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.coverImage}
+                    alt={project.name}
+                    className="projectCover"
+                  />
+                  <div className="projectContent">
+                    <div className="projectHeader">
+                      <h3 className="projectName">{project.name}</h3>
+                      <div className="projectLinks">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            className="projectLink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Live demo"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            className="projectLink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub repo"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <p className="projectDescription">{project.description}</p>
+                    {project.techStack && project.techStack.length > 0 && (
+                      <div className="projectTechStack">
+                        {project.techStack.map((tech) => (
+                          <TechIcon 
+                            key={tech} 
+                            tech={tech} 
+                            showLabel={false} 
+                            variant="compact"
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
         )}
       </main>

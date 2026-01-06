@@ -3,6 +3,7 @@
   "tagline": "Full Stack Developer",
   "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
   "profilePic": "/_.jpeg",
+  "email": "your.email@example.com",
   "techStack": [
     "nextjs",
     "react",
@@ -19,6 +20,120 @@
     {
       "platform": "twitter",
       "url": "https://twitter.com/yourusername"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Company",
+      "role": "Senior Full Stack Developer",
+      "startDate": "Jan 2023",
+      "endDate": null,
+      "current": true,
+      "tools": [
+        "react",
+        "nodejs",
+        "typescript",
+        "postgresql"
+      ],
+      "highlights": [
+        "Led development of customer-facing dashboard serving 50K+ users",
+        "Architected microservices infrastructure reducing latency by 40%",
+        "Mentored junior developers and established coding standards"
+      ]
+    },
+    {
+      "company": "Startup Inc",
+      "role": "Full Stack Developer",
+      "startDate": "Jun 2021",
+      "endDate": "Dec 2022",
+      "current": false,
+      "tools": [
+        "react",
+        "python",
+        "mongodb",
+        "docker"
+      ],
+      "highlights": [
+        "Built real-time collaboration features using WebSockets",
+        "Implemented CI/CD pipelines reducing deployment time by 60%",
+        "Developed REST APIs handling 10K+ requests per minute"
+      ]
+    },
+    {
+      "company": "Digital Agency",
+      "role": "Frontend Developer",
+      "startDate": "Mar 2020",
+      "endDate": "May 2021",
+      "current": false,
+      "tools": [
+        "javascript",
+        "react",
+        "css3",
+        "figma"
+      ],
+      "highlights": [
+        "Delivered 15+ responsive web applications for clients",
+        "Improved page load performance by 50% through optimization",
+        "Collaborated with design team to implement pixel-perfect UIs"
+      ]
+    },
+    {
+      "company": "Freelance",
+      "role": "Web Developer",
+      "startDate": "Jan 2019",
+      "endDate": "Feb 2020",
+      "current": false,
+      "tools": [
+        "html5",
+        "css3",
+        "javascript",
+        "nodejs"
+      ],
+      "highlights": [
+        "Developed custom WordPress themes and plugins",
+        "Built e-commerce solutions for small businesses",
+        "Managed client relationships and project timelines"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project Dashboard",
+      "description": "A real-time analytics dashboard with interactive charts and data visualization for tracking key metrics.",
+      "coverImage": "/projects/project1.jpg",
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project1",
+      "techStack": [
+        "react",
+        "typescript",
+        "nodejs",
+        "postgresql"
+      ]
+    },
+    {
+      "name": "E-Commerce Platform",
+      "description": "Full-stack e-commerce solution with payment integration, inventory management, and admin panel.",
+      "coverImage": "/projects/project2.jpg",
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com/yourusername/project2",
+      "techStack": [
+        "nextjs",
+        "mongodb",
+        "nodejs",
+        "tailwindcss"
+      ]
+    },
+    {
+      "name": "Task Management App",
+      "description": "Collaborative task management tool with real-time updates, team features, and Kanban boards.",
+      "coverImage": "/projects/project3.jpg",
+      "liveUrl": null,
+      "githubUrl": "https://github.com/yourusername/project3",
+      "techStack": [
+        "react",
+        "firebase",
+        "typescript"
+      ]
     }
   ],
   "resumeUrl": "/resume.pdf",
