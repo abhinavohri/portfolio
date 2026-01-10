@@ -563,6 +563,352 @@ a {
   object-fit: contain;
 }
 
+/* Open Source Section */
+.openSourceSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.orgGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.orgCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.orgCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.orgCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.orgLogo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.orgLogo.large {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+.orgAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.orgLogoText {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.orgLogo.large .orgLogoText {
+  font-size: 1.75rem;
+}
+
+.orgName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.orgDescription {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.orgStats {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.orgStatsLoading {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.orgStatItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.statIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+}
+
+.orgStatItem.merged .statIcon {
+  color: #22c55e;
+}
+
+.orgStatValue {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.orgStatItem.merged .orgStatValue {
+  color: #22c55e;
+}
+
+.orgStatLabel {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.orgTechStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.orgCardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.viewDetails {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.arrowIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.orgCard:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--surface) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  height: 20px;
+  width: 50px;
+}
+
+.skeleton.small {
+  height: 16px;
+  width: 40px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Org Detail Page */
+.orgDetailPage {
+  max-width: 700px;
+}
+
+.orgPageHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--foreground);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.backButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.backButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.orgPageTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.orgPageTitle h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.orgPageStats {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* PR List - Cards Style */
+.prListSection {
+  margin-top: 0;
+}
+
+.prListGithub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prItemGithub {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.prItemGithub:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.prIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.prIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.prIcon.merged {
+  color: #8957e5;
+}
+
+.prIcon.open {
+  color: #3fb950;
+}
+
+.prIcon.closed {
+  color: var(--muted);
+}
+
+.prContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.prTitleGithub {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.prItemGithub:hover .prTitleGithub {
+  color: var(--accent);
+}
+
+.prMeta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.prListEmpty {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.prListLoading {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.prItemSkeleton {
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+}
+
+.prItemSkeleton:last-child {
+  border-bottom: none;
+}
+
+.prItemSkeleton .skeleton {
+  height: 100%;
+  width: 60%;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .navbar {
@@ -612,5 +958,35 @@ a {
   /* Hide labels on experience tools for mobile */
   .expToolBadge .techLabel {
     display: none;
+  }
+
+  /* Open Source responsive */
+  .orgGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .orgDetailStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .orgDetailName {
+    font-size: 1.5rem;
+  }
+
+  .prItemMeta {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .prListSection {
+    padding: 0;
+  }
+}
+
+/* Tablet breakpoint */
+@media (min-width: 601px) and (max-width: 900px) {
+  .orgGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

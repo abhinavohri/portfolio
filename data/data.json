@@ -137,5 +137,14 @@
     }
   ],
   "resumeUrl": "/resume.pdf",
-  "githubUrl": "https://github.com/yourusername"
+  "githubUrl": "",
+  "openSource": {
+    "username": "abhinavohri",
+    "repos": [
+      "WeblateOrg/weblate",
+      "indico/indico",
+      "nextcloud/server",
+      "metabrainz/bookbrainz-site"
+    ]
+  }
 }

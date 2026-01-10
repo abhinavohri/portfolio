@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: 'cdn.jsdelivr.net',
         pathname: '/gh/devicons/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
     ],
   },
 };

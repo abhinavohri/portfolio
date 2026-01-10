@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import data from '@/data/data.json';
 import TechIcon from '@/components/TechIcon';
+import OpenSourceSection from '@/components/OpenSourceSection';
 
 // Social icons mapping
 const socialIcons = {
@@ -140,6 +141,11 @@ export default function Home() {
               ))}
             </div>
           </section>
+        )}
+
+        {/* Open Source Section */}
+        {data.openSource && data.openSource.repos && data.openSource.repos.length > 0 && data.openSource.username && (
+          <OpenSourceSection config={data.openSource} />
         )}
 
         {/* Projects Section */}
