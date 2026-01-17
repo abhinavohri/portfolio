@@ -137,6 +137,76 @@ body {
   gap: 1.5rem;
 }
 
+.terminalNavbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-terminal);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  /* Counteract padding of terminalBody */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.navPrefix {
+  color: var(--accent);
+  font-weight: 600;
+  display: none;
+  /* Hide on mobile to save space */
+}
+
+.navItems {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* Hide scrollbar */
+}
+
+.navItems::-webkit-scrollbar {
+  display: none;
+}
+
+.navItem {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.navItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-header);
+}
+
+.navItem.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.navKey {
+  opacity: 0.7;
+  font-weight: normal;
+}
+
+@media (min-width: 640px) {
+  .navPrefix {
+    display: block;
+  }
+}
+
 /* Terminal Block (single command + output) */
 .terminalBlock {
   display: flex;
@@ -559,38 +629,32 @@ body {
   }
 }
 
-/* Theme Toggle - keep simple */
-.navbar {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 100;
-  padding: 0;
+/* Terminal Header Theme Toggle */
+.terminalThemeToggle {
   background: transparent;
   border: none;
-}
-
-.themeToggle {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--bg-terminal);
   cursor: pointer;
+  color: var(--text-secondary);
+  padding: 4px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease;
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  /* Align to right edge */
+}
+
+.terminalThemeToggle:hover {
   color: var(--text-primary);
-  transition: all 0.15s;
+  background: var(--bg-page);
 }
 
-.themeToggle:hover {
-  border-color: var(--accent);
-}
-
-.themeToggle svg {
-  width: 18px;
-  height: 18px;
+.terminalThemeToggle svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* === Open Source Section (Terminal Style) === */

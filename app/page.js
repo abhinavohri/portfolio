@@ -4,11 +4,13 @@ import TechIcon from '@/components/TechIcon';
 import Terminal from '@/components/Terminal';
 import TerminalBlock from '@/components/TerminalBlock';
 import AsciiArt from '@/components/AsciiArt';
+import TerminalNavbar from '@/components/TerminalNavbar';
 
 export default function Home() {
   return (
     <div className="terminalPage">
       <Terminal title="abhinav@portfolio" path="~/about">
+        <TerminalNavbar />
         {/* Welcome / whoami */}
         <TerminalBlock command="whoami">
           <AsciiArt />
@@ -16,12 +18,12 @@ export default function Home() {
         </TerminalBlock>
 
         {/* About */}
-        <TerminalBlock command="cat about.txt">
+        <TerminalBlock command="cat about.txt" id="about">
           <p className="outputText">{data.description}</p>
         </TerminalBlock>
 
         {/* Tech Stack */}
-        <TerminalBlock command="ls skills/">
+        <TerminalBlock command="ls skills/" id="skills">
           <div className="terminalSkills">
             {data.techStack.map((tech) => (
               <TechIcon key={tech} tech={tech} showLabel={true} variant="compact" />
@@ -54,7 +56,7 @@ export default function Home() {
 
         {/* Experience */}
         {data.experience && data.experience.length > 0 && (
-          <TerminalBlock command="cat experience.json | jq">
+          <TerminalBlock command="cat experience.json | jq" id="experience">
             {data.experience.map((exp, index) => (
               <div key={index} className="expEntry">
                 <div className="expHeader">
@@ -87,7 +89,7 @@ export default function Home() {
 
         {/* Projects */}
         {data.projects && data.projects.length > 0 && (
-          <TerminalBlock command="ls -la projects/">
+          <TerminalBlock command="ls -la projects/" id="projects">
             <div className="projectsTable">
               <div className="projectsHeader">
                 <span>NAME</span>
@@ -110,7 +112,7 @@ export default function Home() {
 
         {/* Open Source */}
         {data.openSource && data.openSource.repos && data.openSource.repos.length > 0 && (
-          <TerminalBlock command={`gh pr list --author ${data.openSource.username}`}>
+          <TerminalBlock command={`gh search prs --author ${data.openSource.username}`} id="opensource">
             <OpenSourceSection config={data.openSource} />
           </TerminalBlock>
         )}

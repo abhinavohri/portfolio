@@ -3,23 +3,20 @@
   "tagline": "Building cool stuff. Shipping fast. Breaking things (on purpose).",
   "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
   "profilePic": "/_.jpeg",
-  "email": "your.email@example.com",
+  "email": "abhinavohri13@gmail.com",
   "techStack": [
     "nextjs",
     "react",
     "javascript",
     "nodejs",
     "python",
-    "typescript"
+    "typescript",
+    "php"
   ],
   "socials": [
     {
       "platform": "github",
-      "url": "https://github.com/yourusername"
-    },
-    {
-      "platform": "twitter",
-      "url": "https://twitter.com/yourusername"
+      "url": "https://github.com/abhinavohri"
     }
   ],
   "experience": [

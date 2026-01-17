@@ -6,9 +6,9 @@
  * @param {React.ReactNode} children - The output content
  * @param {boolean} showCursor - Whether to show blinking cursor instead of output
  */
-export default function TerminalBlock({ command, children, showCursor = false }) {
+export default function TerminalBlock({ command, children, showCursor = false, id }) {
     return (
-        <div className="terminalBlock">
+        <div className="terminalBlock" id={id}>
             <div className="cmdLine">
                 <span className="prompt">$</span>
                 {command && <span className="cmd">{command}</span>}

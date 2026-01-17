@@ -1,5 +1,7 @@
 'use client';
 
+import ThemeToggle from './ThemeToggle';
+
 /**
  * Terminal wrapper component - provides the terminal window frame
  * with title bar and buttons
@@ -18,7 +20,9 @@ export default function Terminal({ title = 'terminal', path = '~', children }) {
                     <span>{title}</span>
                     <span className="terminalPath">{path}</span>
                 </div>
-                <div className="terminalHeaderRight"></div>
+                <div className="terminalHeaderRight">
+                    <ThemeToggle />
+                </div>
             </div>
 
             {/* Terminal Content */}
