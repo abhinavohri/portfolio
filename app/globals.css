@@ -266,6 +266,32 @@ body {
   max-width: 70ch;
 }
 
+
+/* Role / Title Standout */
+.roleContainer {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rolePrefix {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.roleText {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+
 /* ASCII Art */
 .asciiArt {
   font-size: 0.65rem;
@@ -901,4 +927,168 @@ svg {
   font-size: 0.75rem;
   color: var(--text-muted);
   flex-shrink: 0;
+}
+
+/* === CRT / Scanline Effects === */
+.scanline-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0.15;
+}
+
+/* Moving scanline bar */
+.scanline {
+  width: 100%;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  animation: scanline 8s linear infinite;
+  display: none;
+}
+
+/* Static lines background */
+.scanline-container::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Subtle Flicker */
+.flicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.05);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.02;
+  }
+
+  5% {
+    opacity: 0.05;
+  }
+
+  10% {
+    opacity: 0.02;
+  }
+
+  15% {
+    opacity: 0.06;
+  }
+
+  20% {
+    opacity: 0.02;
+  }
+
+  25% {
+    opacity: 0.02;
+  }
+
+  30% {
+    opacity: 0.02;
+  }
+
+  35% {
+    opacity: 0.01;
+  }
+
+  40% {
+    opacity: 0.05;
+  }
+
+  45% {
+    opacity: 0.02;
+  }
+
+  50% {
+    opacity: 0.02;
+  }
+
+  55% {
+    opacity: 0.05;
+  }
+
+  60% {
+    opacity: 0.02;
+  }
+
+  65% {
+    opacity: 0.07;
+  }
+
+  70% {
+    opacity: 0.02;
+  }
+
+  75% {
+    opacity: 0.02;
+  }
+
+  80% {
+    opacity: 0.05;
+  }
+
+  85% {
+    opacity: 0.02;
+  }
+
+  90% {
+    opacity: 0.02;
+  }
+
+  95% {
+    opacity: 0.07;
+  }
+
+  100% {
+    opacity: 0.02;
+  }
+}
+
+/* Grain/Noise */
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
 }

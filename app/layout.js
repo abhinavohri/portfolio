@@ -1,5 +1,6 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Scanline from "@/components/Scanline";
 
 
 const jetbrainsMono = JetBrains_Mono({
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={jetbrainsMono.className}>
+        <Scanline />
 
         {children}
       </body>

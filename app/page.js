@@ -5,6 +5,7 @@ import Terminal from '@/components/Terminal';
 import TerminalBlock from '@/components/TerminalBlock';
 import AsciiArt from '@/components/AsciiArt';
 import TerminalNavbar from '@/components/TerminalNavbar';
+import Typewriter from '@/components/Typewriter';
 
 export default function Home() {
   return (
@@ -14,12 +15,19 @@ export default function Home() {
         {/* Welcome / whoami */}
         <TerminalBlock command="whoami">
           <AsciiArt />
-          <p className="outputText">{data.tagline}</p>
+          <div className="roleContainer">
+            <span className="rolePrefix">Role:</span> <span className="roleText">Full Stack Developer</span>
+          </div>
+          <p className="outputText">
+            <Typewriter text={data.tagline} speed={40} delay={500} />
+          </p>
         </TerminalBlock>
 
         {/* About */}
         <TerminalBlock command="cat about.txt" id="about">
-          <p className="outputText">{data.description}</p>
+          <p className="outputText">
+             <Typewriter text={data.description} speed={20} delay={2000} />
+          </p>
         </TerminalBlock>
 
         {/* Tech Stack */}
