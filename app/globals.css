@@ -207,6 +207,35 @@ body {
   }
 }
 
+/* Visitor Counter */
+.visitorCounter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+  display: none;
+  /* Hidden on mobile by default */
+}
+
+@media (min-width: 768px) {
+  .visitorCounter {
+    display: flex;
+  }
+}
+
+.visitorCounter .label {
+  font-weight: 600;
+}
+
+.visitorCounter .count {
+  color: var(--accent);
+  font-family: inherit;
+  letter-spacing: 0.1em;
+}
+
 /* Terminal Block (single command + output) */
 .terminalBlock {
   display: flex;

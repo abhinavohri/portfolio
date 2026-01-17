@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import VisitorCounter from './VisitorCounter';
 
 export default function TerminalNavbar() {
     // We'll track the active section based on scroll position
@@ -44,6 +45,9 @@ export default function TerminalNavbar() {
                         <span className="navKey">[{item.shortcut}]</span> {item.label}
                     </button>
                 ))}
+            </div>
+            <div style={{ marginLeft: 'auto' }}>
+                <VisitorCounter />
             </div>
         </div>
     );
