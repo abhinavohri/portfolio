@@ -430,126 +430,272 @@ button,
   height: 20px;
 }
 
-/* Experience Section */
+/* Experience Section - Accordion Style */
 .experienceSection {
   display: flex;
   flex-direction: column;
 }
 
-.experienceList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.sectionLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
 }
 
-.experienceItem {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
+.experienceAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each experience card */
+.expCard {
+  border-bottom: 1px solid var(--border);
   transition: all 0.2s ease;
 }
 
-.experienceItem:hover {
-  border-color: var(--accent);
+.expCard:last-child {
+  border-bottom: none;
 }
 
-.experienceHeader {
+.expCard[open] {
+  padding-bottom: 1.5rem;
+}
+
+/* Header (always visible) */
+.expHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  list-style: none;
   gap: 1rem;
 }
 
-.experienceCompany {
+.expHeader::-webkit-details-marker {
+  display: none;
+}
+
+.expHeader::marker {
+  display: none;
+}
+
+.expHeaderLeft {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* Company logo */
+.expLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.expLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.expLogoFallback {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  font-family: var(--font-headings);
+}
+
+.expHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.expCompanyRow {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.companyName {
+.expCompanyName {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--foreground);
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-.currentBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
-  background: var(--success-muted);
-  border: 1px solid var(--success-border);
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--success);
-}
-
-.currentDot {
-  width: 6px;
-  height: 6px;
-  background: var(--success);
-  border-radius: 50%;
-}
-
-.experienceDates {
-  font-size: 0.85rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.experienceRole {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.experienceTools {
+/* Social icons next to company name */
+.expSocialIcons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.35rem;
 }
 
-.toolBadge {
-  display: inline-flex;
+.expSocialIcons a {
+  display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.6rem;
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.75rem;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.expSocialIcons a:hover {
   color: var(--foreground);
 }
 
-.toolBadge img {
-  width: 14px;
-  height: 14px;
+/* Working badge */
+.workingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #22c55e;
 }
 
-.experienceHighlights {
+.workingDot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Chevron icon */
+.chevronIcon {
+  color: var(--muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.expCard[open] .chevronIcon {
+  transform: rotate(180deg);
+}
+
+.expRole {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Right side - dates and location */
+.expHeaderRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.expDates {
+  font-size: 0.85rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.expLocation {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Expandable content */
+.expContent {
+  padding-left: 0;
+}
+
+/* Technologies & Tools section */
+.expToolsSection {
+  margin-bottom: 1.25rem;
+}
+
+.expToolsTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 0.75rem 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.expToolsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Highlights list */
+.expHighlights {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.experienceHighlights li {
+.expHighlights li {
   position: relative;
-  padding-left: 1rem;
-  margin-bottom: 0.5rem;
+  padding-left: 0;
+  margin-bottom: 0.65rem;
   font-size: 0.9rem;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-.experienceHighlights li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
+.expHighlights li::before {
+  content: "▪";
+  margin-right: 0.5rem;
+  color: var(--foreground);
+}
+
+.expHighlights li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .expHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .expHeaderRight {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 64px;
+  }
+
+  .expContent {
+    padding-left: 0;
+  }
 }
 
 /* Projects Section */

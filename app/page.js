@@ -95,49 +95,89 @@ export default function Home() {
           </section>
         )}
 
-        {/* Experience Section */}
+        {/* Experience Section - Accordion Style */}
         {data.experience && data.experience.length > 0 && (
           <section className="experienceSection">
+            <span className="sectionLabel">Featured</span>
             <h2 className="sectionTitle">Experience</h2>
-            <div className="experienceList">
+            <div className="experienceAccordion">
               {data.experience.map((exp, index) => (
-                <div key={index} className="experienceItem">
-                  <div className="experienceHeader">
-                    <div className="experienceCompany">
-                      <span className="companyName">{exp.company}</span>
-                      {exp.current && (
-                        <span className="currentBadge">
-                          <span className="currentDot"></span>
-                          Current
-                        </span>
+                <details 
+                  key={index} 
+                  className="expCard"
+                  open={exp.current || index === 0}
+                >
+                  <summary className="expHeader">
+                    <div className="expHeaderLeft">
+                      <div className="expHeaderInfo">
+                        <div className="expCompanyRow">
+                          <h3 className="expCompanyName">{exp.company}</h3>
+                          <div className="expSocialIcons">
+                            {exp.website && (
+                              <a href={exp.website} target="_blank" rel="noopener noreferrer" aria-label="Website">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <circle cx="12" cy="12" r="10"/>
+                                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                              </a>
+                            )}
+                            {exp.github && (
+                              <a href={exp.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                              </a>
+                            )}
+                          </div>
+                          {exp.current && (
+                            <span className="workingBadge">
+                              <span className="workingDot"></span>
+                              Working
+                            </span>
+                          )}
+                          <svg className="chevronIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                          </svg>
+                        </div>
+                        <p className="expRole">{exp.role}</p>
+                      </div>
+                    </div>
+                    <div className="expHeaderRight">
+                      <span className="expDates">
+                        {exp.startDate} - {exp.endDate || 'Present'}
+                      </span>
+                      {exp.location && (
+                        <span className="expLocation">{exp.location}</span>
                       )}
                     </div>
-                    <span className="experienceDates">
-                      {exp.startDate} — {exp.endDate || 'Present'}
-                    </span>
+                  </summary>
+                  
+                  <div className="expContent">
+                    {exp.tools && exp.tools.length > 0 && (
+                      <div className="expToolsSection">
+                        <h4 className="expToolsTitle">Technologies & Tools</h4>
+                        <div className="expToolsGrid">
+                          {exp.tools.map((tool) => (
+                            <TechIcon 
+                              key={tool} 
+                              tech={tool} 
+                              showLabel={true} 
+                              variant="badge"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {exp.highlights && exp.highlights.length > 0 && (
+                      <ul className="expHighlights">
+                        {exp.highlights.map((highlight, hIndex) => (
+                          <li key={hIndex}>{highlight}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <p className="experienceRole">{exp.role}</p>
-                  {exp.tools && exp.tools.length > 0 && (
-                    <div className="experienceTools">
-                      {exp.tools.map((tool) => (
-                        <TechIcon 
-                          key={tool} 
-                          tech={tool} 
-                          showLabel={true} 
-                          variant="badge"
-                          className="expToolBadge"
-                        />
-                      ))}
-                    </div>
-                  )}
-                  {exp.highlights && exp.highlights.length > 0 && (
-                    <ul className="experienceHighlights">
-                      {exp.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex}>{highlight}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+                </details>
               ))}
             </div>
           </section>
