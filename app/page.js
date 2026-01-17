@@ -1,261 +1,123 @@
-import Image from 'next/image';
 import data from '@/data/data.json';
-import TechIcon from '@/components/TechIcon';
 import OpenSourceSection from '@/components/OpenSourceSection';
-
-// Social icons mapping
-const socialIcons = {
-  github: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-    </svg>
-  ),
-  twitter: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-  ),
-  linkedin: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-    </svg>
-  ),
-};
+import TechIcon from '@/components/TechIcon';
+import Terminal from '@/components/Terminal';
+import TerminalBlock from '@/components/TerminalBlock';
+import AsciiArt from '@/components/AsciiArt';
 
 export default function Home() {
   return (
-    <div className="container">
-      <main className="main">
-        {/* Profile Section */}
-        <section className="profile">
-          <Image
-            src={data.profilePic}
-            alt={`${data.name}'s profile picture`}
-            width={100}
-            height={100}
-            className="profileImage"
-            priority
-          />
-          <div className="profileInfo">
-            <h1 className="name">{data.name}</h1>
-            <p className="tagline">{data.tagline}</p>
-          </div>
-        </section>
+    <div className="terminalPage">
+      <Terminal title="abhinav@portfolio" path="~/about">
+        {/* Welcome / whoami */}
+        <TerminalBlock command="whoami">
+          <AsciiArt />
+          <p className="outputText">{data.tagline}</p>
+        </TerminalBlock>
 
-        {/* About Section */}
-        <section className="about">
-          <p>{data.description}</p>
-        </section>
+        {/* About */}
+        <TerminalBlock command="cat about.txt">
+          <p className="outputText">{data.description}</p>
+        </TerminalBlock>
 
-        {/* Tech Stack Section - with labels */}
-        <section className="techStack">
-          <h2 className="techStackTitle">Tech Stack</h2>
-          <div className="techStackGrid">
+        {/* Tech Stack */}
+        <TerminalBlock command="ls skills/">
+          <div className="terminalSkills">
             {data.techStack.map((tech) => (
-              <TechIcon key={tech} tech={tech} showLabel={true} />
+              <TechIcon key={tech} tech={tech} showLabel={true} variant="compact" />
             ))}
           </div>
-        </section>
+        </TerminalBlock>
 
-        {/* CTA Buttons */}
-        <section className="ctaButtons">
-          <a href={data.resumeUrl} className="ctaButton primary" download>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-            </svg>
-            Resume
-          </a>
-          <a href={`mailto:${data.email}`} className="ctaButton secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-            </svg>
-            Contact Me
-          </a>
-        </section>
+        {/* Links */}
+        <TerminalBlock command="cat links.txt">
+          <div className="terminalLinks">
+            <a href={data.resumeUrl} className="terminalLink" download>
+              <span className="linkIcon">📄</span> resume.pdf
+            </a>
+            <a href={`mailto:${data.email}`} className="terminalLink">
+              <span className="linkIcon">📧</span> {data.email}
+            </a>
+            {data.socials?.map((social) => (
+              <a 
+                key={social.platform} 
+                href={social.url} 
+                className="terminalLink"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="linkIcon">🔗</span> {social.platform}
+              </a>
+            ))}
+          </div>
+        </TerminalBlock>
 
-        {/* Socials Section */}
-        {data.socials && data.socials.length > 0 && (
-          <section className="socials">
-            {data.socials.map((social) => {
-              const icon = socialIcons[social.platform.toLowerCase()];
-              if (!icon) return null;
-              return (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  className="socialLink"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.platform}
-                >
-                  {icon}
-                </a>
-              );
-            })}
-          </section>
-        )}
-
-        {/* Experience Section - Accordion Style */}
+        {/* Experience */}
         {data.experience && data.experience.length > 0 && (
-          <section className="experienceSection">
-            <span className="sectionLabel">Featured</span>
-            <h2 className="sectionTitle">Experience</h2>
-            <div className="experienceAccordion">
-              {data.experience.map((exp, index) => (
-                <details 
-                  key={index} 
-                  className="expCard"
-                  open={exp.current || index === 0}
-                >
-                  <summary className="expHeader">
-                    <div className="expHeaderLeft">
-                      <div className="expHeaderInfo">
-                        <div className="expCompanyRow">
-                          <h3 className="expCompanyName">{exp.company}</h3>
-                          <div className="expSocialIcons">
-                            {exp.website && (
-                              <a href={exp.website} target="_blank" rel="noopener noreferrer" aria-label="Website">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                  <circle cx="12" cy="12" r="10"/>
-                                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                                </svg>
-                              </a>
-                            )}
-                            {exp.github && (
-                              <a href={exp.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                              </a>
-                            )}
-                          </div>
-                          {exp.current && (
-                            <span className="workingBadge">
-                              <span className="workingDot"></span>
-                              Working
-                            </span>
-                          )}
-                          <svg className="chevronIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <polyline points="6 9 12 15 18 9"/>
-                          </svg>
-                        </div>
-                        <p className="expRole">{exp.role}</p>
-                      </div>
-                    </div>
-                    <div className="expHeaderRight">
-                      <span className="expDates">
-                        {exp.startDate} - {exp.endDate || 'Present'}
-                      </span>
-                      {exp.location && (
-                        <span className="expLocation">{exp.location}</span>
-                      )}
-                    </div>
-                  </summary>
-                  
-                  <div className="expContent">
-                    {exp.tools && exp.tools.length > 0 && (
-                      <div className="expToolsSection">
-                        <h4 className="expToolsTitle">Technologies & Tools</h4>
-                        <div className="expToolsGrid">
-                          {exp.tools.map((tool) => (
-                            <TechIcon 
-                              key={tool} 
-                              tech={tool} 
-                              showLabel={true} 
-                              variant="badge"
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    
-                    {exp.highlights && exp.highlights.length > 0 && (
-                      <ul className="expHighlights">
-                        {exp.highlights.map((highlight, hIndex) => (
-                          <li key={hIndex}>{highlight}</li>
-                        ))}
-                      </ul>
-                    )}
+          <TerminalBlock command="cat experience.json | jq">
+            {data.experience.map((exp, index) => (
+              <div key={index} className="expEntry">
+                <div className="expHeader">
+                  <span className="expCompany">{exp.company}</span>
+                  {exp.current && <span className="expCurrent">[ACTIVE]</span>}
+                </div>
+                <div className="expMeta">
+                  <span className="expRole">{exp.role}</span>
+                  <span className="expDates">{exp.startDate} → {exp.endDate || 'Present'}</span>
+                </div>
+                {exp.location && <div className="expLocation">📍 {exp.location}</div>}
+                {exp.tools && (
+                  <div className="expTools">
+                    {exp.tools.map((tool) => (
+                      <TechIcon key={tool} tech={tool} showLabel={true} variant="badge" />
+                    ))}
                   </div>
-                </details>
-              ))}
-            </div>
-          </section>
+                )}
+                {exp.highlights && (
+                  <ul className="expHighlights">
+                    {exp.highlights.map((h, i) => (
+                      <li key={i}>- {h}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </TerminalBlock>
         )}
 
-        {/* Open Source Section */}
-        {data.openSource && data.openSource.repos && data.openSource.repos.length > 0 && data.openSource.username && (
-          <OpenSourceSection config={data.openSource} />
-        )}
-
-        {/* Projects Section */}
+        {/* Projects */}
         {data.projects && data.projects.length > 0 && (
-          <section className="projectsSection">
-            <h2 className="sectionTitle">Projects</h2>
-            <div className="projectsGrid">
+          <TerminalBlock command="ls -la projects/">
+            <div className="projectsTable">
+              <div className="projectsHeader">
+                <span>NAME</span>
+                <span>DESCRIPTION</span>
+                <span>STACK</span>
+              </div>
               {data.projects.map((project, index) => (
-                <div key={index} className="projectCard">
-                  {project.coverImage && (
-                    <img
-                      src={project.coverImage}
-                      alt={project.name}
-                      className="projectCover"
-                    />
-                  )}
-                  <div className="projectContent">
-                    <div className="projectHeader">
-                    <h3 className="projectName">{project.name}</h3>
-                    <div className="projectLinks">
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          className="projectLink"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="GitHub repo"
-                          title="View on GitHub"
-                        >
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                          </svg>
-                        </a>
-                      )}
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          className="projectLink"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Live demo"
-                          title="View live demo"
-                        >
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                          </svg>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <p className="projectDescription">{project.description}</p>
-                  {project.techStack && project.techStack.length > 0 && (
-                    <div className="projectTechStack">
-                      {project.techStack.map((tech) => (
-                        <TechIcon 
-                          key={tech} 
-                          tech={tech} 
-                          showLabel={true} 
-                          variant="badge"
-                        />
-                      ))}
-                    </div>
-                  )}
-                  </div>
+                <div key={index} className="projectRow">
+                  <span className="projectName">
+                    {project.name}
+                    {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="projectIcon">↗</a>}
+                  </span>
+                  <span className="projectDesc">{project.description}</span>
+                  <span className="projectStack">{project.techStack?.join(', ')}</span>
                 </div>
               ))}
             </div>
-          </section>
+          </TerminalBlock>
         )}
-      </main>
+
+        {/* Open Source */}
+        {data.openSource && data.openSource.repos && data.openSource.repos.length > 0 && (
+          <TerminalBlock command={`gh pr list --author ${data.openSource.username}`}>
+            <OpenSourceSection config={data.openSource} />
+          </TerminalBlock>
+        )}
+
+        {/* Prompt cursor */}
+        <TerminalBlock showCursor />
+      </Terminal>
     </div>
   );
 }

@@ -1,21 +1,21 @@
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const inter = Inter({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Personal developer portfolio",
+  title: "Abhinav Ohri | Developer",
+  description: "Full-stack developer portfolio",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={jetbrainsMono.className}>
         <Navbar />
         {children}
       </body>

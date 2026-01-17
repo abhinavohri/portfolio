@@ -16,13 +16,30 @@ export default function OpenSourceSection({ config }) {
   useEffect(() => {
     async function loadData() {
       try {
+        // Check if we have cached data first
+        const cacheKey = `os-orgs-${username}`;
+        const cached = sessionStorage.getItem(cacheKey);
+
+        if (cached) {
+          const cachedOrgs = JSON.parse(cached);
+          setOrgs(cachedOrgs);
+          setLoading(false);
+          return;
+        }
+
+        // No cache, fetch from API
         const data = await fetchGitHubData(repos, username);
         setOrgs(data.orgs || []);
 
-        // Cache for detail pages
-        data.orgs?.forEach(org => {
-          sessionStorage.setItem(`os-${org.owner.toLowerCase()}`, JSON.stringify(org));
-        });
+        // Cache the orgs list
+        if (data.orgs && data.orgs.length > 0) {
+          sessionStorage.setItem(cacheKey, JSON.stringify(data.orgs));
+
+          // Also cache individual orgs for detail pages
+          data.orgs.forEach(org => {
+            sessionStorage.setItem(`os-${org.owner.toLowerCase()}`, JSON.stringify(org));
+          });
+        }
       } catch (error) {
         console.error('Error fetching GitHub data:', error);
       } finally {
