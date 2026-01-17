@@ -24,75 +24,81 @@
   ],
   "experience": [
     {
-      "company": "Tech Company",
-      "role": "Senior Full Stack Developer",
-      "startDate": "Jan 2023",
+      "company": "University Of Alberta",
+      "location": "Edmonton, AB",
+      "role": "Fullstack Developer",
+      "startDate": "Sept 2025",
       "endDate": null,
       "current": true,
       "tools": [
-        "react",
-        "nodejs",
-        "typescript",
-        "postgresql"
+        "php",
+        "javascript",
+        "backbone",
+        "css3"
       ],
       "highlights": [
-        "Led development of customer-facing dashboard serving 50K+ users",
-        "Architected microservices infrastructure reducing latency by 40%",
-        "Mentored junior developers and established coding standards"
+        "GrandForum: Enhanced a MediaWiki-based collaboration tool used for project coordination and document submissions",
+        "Implemented end-to-end features including reviewer assignment, comment history, and file upload handling using PHP for backend logic",
+        "Simplified multi-step workflows using Backbone.js for state management and vanilla JS for role-specific behaviors",
+        "Delivered CSS improvements, persistent UI configurations, and layout changes that resolved client-reported usability issues"
       ]
     },
     {
-      "company": "Startup Inc",
-      "role": "Full Stack Developer",
-      "startDate": "Jun 2021",
-      "endDate": "Dec 2022",
-      "current": false,
-      "tools": [
-        "react",
-        "python",
-        "mongodb",
-        "docker"
-      ],
-      "highlights": [
-        "Built real-time collaboration features using WebSockets",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
-        "Developed REST APIs handling 10K+ requests per minute"
-      ]
-    },
-    {
-      "company": "Digital Agency",
+      "company": "Credgible",
       "role": "Frontend Developer",
-      "startDate": "Mar 2020",
-      "endDate": "May 2021",
+      "startDate": "May 2025",
+      "endDate": "Sept 2025",
       "current": false,
       "tools": [
-        "javascript",
         "react",
-        "css3",
-        "figma"
+        "flask",
+        "ponder",
+        "materialui"
       ],
       "highlights": [
-        "Delivered 15+ responsive web applications for clients",
-        "Improved page load performance by 50% through optimization",
-        "Collaborated with design team to implement pixel-perfect UIs"
+        "Liquidation Protocol Efficiency Tracker: Engineered a full-stack liquidation monitoring system",
+        "Utilized Ponder to index on-chain events and a Flask backend to compute real-time efficiency metrics",
+        "Developed a RESTful API to serve processed data to a React and Material UI dashboard",
+        "Visualized latency between positions becoming liquidatable and actual liquidation transactions"
       ]
     },
     {
-      "company": "Freelance",
-      "role": "Web Developer",
-      "startDate": "Jan 2019",
-      "endDate": "Feb 2020",
+      "company": "DeepThought Initiative",
+      "location": "East Lansing, MI",
+      "role": "Research Software Engineer",
+      "startDate": "Jan 2024",
+      "endDate": "May 2025",
       "current": false,
       "tools": [
-        "html5",
-        "css3",
-        "javascript",
-        "nodejs"
+        "react",
+        "flask",
+        "python",
+        "vitest"
       ],
       "highlights": [
-        "Developed custom WordPress themes and plugins",
-        "Built e-commerce solutions for small businesses",
-        "Managed client relationships and project timelines"
+        "DTI Reviewer: Built an author ranking system coupling Flask backend for cosine-similarity analysis with responsive React UI",
+        "PACManWeb: Created peer-review support tool with scalable React interface using Context API + useReducer for state management",
+        "Implemented real-time log streaming via SSE, React-Bootstrap UI components, and tested using React Testing Library + Vitest",
+        "Delivered smooth reviewer workflows with component-level and browser-storage caching and lazy-loaded routes"
+      ]
+    },
+    {
+      "company": "Google Summer of Code",
+      "role": "Mentor",
+      "startDate": "2024",
+      "endDate": "2025",
+      "current": false,
+      "tools": [
+        "python",
+        "documentation",
+        "testing",
+        "visualization"
+      ],
+      "highlights": [
+        "Tardis: Mentored students in scientific software development focusing on visualization techniques and regression testing",
+        "Guided on software design and documentation best practices",
+        "Strengthened students' technical and professional skills",
+        "Improved reliability, usability, and long-term sustainability of the TARDIS research codebase"
       ]
     }
   ],
