@@ -707,38 +707,37 @@ button,
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .projectCard {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   transition: all 0.2s ease;
 }
 
 .projectCard:hover {
   border-color: var(--accent);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .projectCover {
   width: 100%;
-  height: 200px;
+  height: 140px;
   object-fit: cover;
-  background: var(--border);
 }
 
 .projectContent {
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .projectHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .projectName {

@@ -104,41 +104,42 @@
   ],
   "projects": [
     {
-      "name": "Project Dashboard",
-      "description": "A real-time analytics dashboard with interactive charts and data visualization for tracking key metrics.",
-      "coverImage": "/projects/project1.jpg",
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project1",
+      "name": "VectorSearch",
+      "description": "A WordPress AI Plugin with RAG system using Gemini LLMs for semantic indexing. Features Hybrid Search engine using Reciprocal Rank Fusion to merge keyword matching with vector-based cosine similarity.",
+      "coverImage": "/projects/vectorsearch.png",
+      "githubUrl": null,
+      "liveUrl": null,
       "techStack": [
-        "react",
-        "typescript",
-        "nodejs",
-        "postgresql"
+        "python",
+        "gemini",
+        "wordpress",
+        "php"
       ]
     },
     {
-      "name": "E-Commerce Platform",
-      "description": "Full-stack e-commerce solution with payment integration, inventory management, and admin panel.",
-      "coverImage": "/projects/project2.jpg",
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com/yourusername/project2",
+      "name": "RiskScan - DeFi Dashboard",
+      "description": "Real-time DeFi risk monitoring platform with interactive data visualizations. Tracks protocol solvency, liquidation heatmaps, and live oracle health using Recharts.",
+      "coverImage": "/projects/defi_dashboard.png",
+      "githubUrl": null,
+      "liveUrl": null,
       "techStack": [
         "nextjs",
-        "mongodb",
-        "nodejs",
-        "tailwindcss"
+        "typescript",
+        "convex",
+        "recharts"
       ]
     },
     {
-      "name": "Task Management App",
-      "description": "Collaborative task management tool with real-time updates, team features, and Kanban boards.",
-      "coverImage": "/projects/project3.jpg",
+      "name": "AI-Powered Recruitment Suite",
+      "description": "End-to-end recruitment platform automating hiring workflows with intelligent REST APIs for scheduling, interviewer matching, resume parsing, and personalized candidate feedback.",
+      "coverImage": "/projects/recruitment_suite.png",
+      "githubUrl": null,
       "liveUrl": null,
-      "githubUrl": "https://github.com/yourusername/project3",
       "techStack": [
-        "react",
-        "firebase",
-        "typescript"
+        "vue",
+        "fastapi",
+        "gemini",
+        "python"
       ]
     }
   ],
