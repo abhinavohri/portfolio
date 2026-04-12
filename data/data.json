@@ -21,12 +21,28 @@
   ],
   "experience": [
     {
-      "company": "University of Alberta",
-      "location": "Edmonton, AB",
+      "company": "Offlyn",
+      "location": "Bangalore, IN",
       "role": "Fullstack Developer",
-      "startDate": "Sept 2025",
+      "startDate": "Jan 2026",
       "endDate": null,
       "current": true,
+      "tools": [
+        "flutter",
+        "nextjs"
+      ],
+      "highlights": [
+        "Mobile App: Engineered a complete overhaul of the mobile application using Flutter, implementing state management best practices and optimizing resource utilization for enhanced performance.",
+        "Website: Architected a responsive web interface using Next.js, leveraging SSR to enhance SEO and minimize Time to Interactive."
+      ]
+    },
+    {
+      "company": "University of Alberta",
+      "location": "Edmonton, AB",
+      "role": "Fullstack Developer (Contract)",
+      "startDate": "Sept 2025",
+      "endDate": "Dec 2025",
+      "current": false,
       "tools": [
         "php",
         "javascript",
@@ -42,7 +58,7 @@
     },
     {
       "company": "Credgible",
-      "role": "Frontend Developer",
+      "role": "Fullstack Developer (Contract)",
       "startDate": "May 2025",
       "endDate": "Sept 2025",
       "current": false,
