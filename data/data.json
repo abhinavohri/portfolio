@@ -21,19 +21,41 @@
   ],
   "experience": [
     {
-      "company": "Offlyn",
-      "location": "Bangalore, IN",
-      "role": "Fullstack Developer",
-      "startDate": "Jan 2026",
+      "company": "Data Collective",
+      "location": "Remote",
+      "role": "Software Engineer (Contractor)",
+      "startDate": "Jul 2026",
       "endDate": null,
       "current": true,
       "tools": [
-        "flutter",
-        "nextjs"
+        "react",
+        "typescript",
+        "python",
+        "postgresql",
+        "redis"
       ],
       "highlights": [
-        "Mobile App: Engineered a complete overhaul of the mobile application using Flutter, implementing state management best practices and optimizing resource utilization for enhanced performance.",
-        "Website: Architected a responsive web interface using Next.js, leveraging SSR to enhance SEO and minimize Time to Interactive."
+        "CreateOS: Delivered accounting and expense-management capabilities across React, TypeScript, and FastAPI, including batch imports, approval workflows, budget allocation, Tipalti vendor integration, and externally paid expenses; integrated human-reviewed LLM invoice extraction with reconciliation and financial-validation safeguards into the submission workflow.",
+        "A&R Dashboard: Built a music analytics dashboard over 2M streaming records, reducing ingestion time from 30 minutes to under 5 minutes, completing core artist, track, and group scoring in under 10 seconds, and serving materialized analytical views in under 10 ms. Enabled users to explore the underlying music data through an AI chat interface that returned data-backed answers and tabular results, and deployed the platform on GCP.",
+        "HR Bot: Developed an AI-assisted technical-sourcing platform that discovers, enriches, and ranks candidates using GitHub, web, CV, and LinkedIn evidence; deployed asynchronous FastAPI pipelines on GKE with PostgreSQL, Redis, WebSockets, and Kubernetes Jobs and CronJobs."
+      ]
+    },
+    {
+      "company": "Offlyn",
+      "location": "Bangalore, IN",
+      "role": "Founding Software Engineer",
+      "startDate": "Jan 2026",
+      "endDate": "Jul 2026",
+      "current": false,
+      "tools": [
+        "flutter",
+        "nodejs",
+        "mongodb",
+        "aws"
+      ],
+      "highlights": [
+        "Flutter & Node.js Platform: Built and scaled an event-reservation platform to over 10,000 users and 1.6K monthly active users, owning end-to-end development across Flutter applications for iOS and Android and Node.js and MongoDB services for booking, multi-ticket checkout, payments, real-time messaging, host analytics, and brand collaboration.",
+        "Mobile Performance & Cloud Infrastructure: Optimized application performance through paginated loading, shared client caching, consolidated API requests, and dimension-aware WebP delivery using AWS CloudFront and CloudFormation; managed production deployments, environment segregation, monitoring, and incident debugging across the platform."
       ]
     },
     {
