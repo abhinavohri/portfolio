@@ -55,6 +55,20 @@ export default function OpenSourceSection({ config }) {
     return null;
   }
 
+  const rankedOrgs = [...orgs].sort((firstOrg, secondOrg) => {
+    const totalDifference = (secondOrg.stats?.total || 0) - (firstOrg.stats?.total || 0);
+    if (totalDifference !== 0) {
+      return totalDifference;
+    }
+
+    const mergedDifference = (secondOrg.stats?.merged || 0) - (firstOrg.stats?.merged || 0);
+    if (mergedDifference !== 0) {
+      return mergedDifference;
+    }
+
+    return firstOrg.owner.localeCompare(secondOrg.owner);
+  });
+
   return (
     <section className="openSourceSection">
       <h2 className="sectionTitle">Open Source</h2>
@@ -70,7 +84,7 @@ export default function OpenSourceSection({ config }) {
             </div>
           ))
         ) : (
-          orgs.map((org) => (
+          rankedOrgs.map((org) => (
             <OrgCard
               key={org.owner}
               org={org}
