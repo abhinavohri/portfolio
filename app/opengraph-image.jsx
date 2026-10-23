@@ -124,38 +124,111 @@ export default function OpenGraphImage() {
 
             <div
               style={{
-                width: '310px',
+                width: '360px',
+                height: '390px',
+                position: 'relative',
                 display: 'flex',
-                flexDirection: 'column',
                 alignSelf: 'center',
-                padding: '28px',
-                border: '1px solid #30363d',
-                borderRadius: '16px',
-                background: '#090d13',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <div style={{ display: 'flex', color: '#6e7681', fontSize: '17px', letterSpacing: '0.12em', marginBottom: '22px' }}>
-                CURRENT FOCUS
+              <svg width="360" height="360" viewBox="0 0 360 360" fill="none">
+                <defs>
+                  <linearGradient id="core" x1="112" y1="106" x2="248" y2="254" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#22d3ee" />
+                    <stop offset="1" stopColor="#3fb950" />
+                  </linearGradient>
+                  <linearGradient id="route" x1="34" y1="36" x2="326" y2="324" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#58a6ff" stopOpacity="0.15" />
+                    <stop offset="0.5" stopColor="#22d3ee" stopOpacity="0.9" />
+                    <stop offset="1" stopColor="#3fb950" stopOpacity="0.15" />
+                  </linearGradient>
+                </defs>
+
+                <circle cx="180" cy="180" r="151" stroke="#1f6feb" strokeOpacity="0.16" strokeDasharray="4 12" />
+                <circle cx="180" cy="180" r="119" stroke="#22d3ee" strokeOpacity="0.14" />
+                <circle cx="180" cy="180" r="88" stroke="#3fb950" strokeOpacity="0.12" strokeDasharray="3 8" />
+
+                <path d="M180 91V42H276V74" stroke="url(#route)" strokeWidth="2" />
+                <path d="M241 119L294 66" stroke="url(#route)" strokeWidth="2" />
+                <path d="M269 180H327" stroke="url(#route)" strokeWidth="2" />
+                <path d="M241 241L298 298" stroke="url(#route)" strokeWidth="2" />
+                <path d="M180 269V320H91V291" stroke="url(#route)" strokeWidth="2" />
+                <path d="M119 241L62 298" stroke="url(#route)" strokeWidth="2" />
+                <path d="M91 180H33" stroke="url(#route)" strokeWidth="2" />
+                <path d="M119 119L63 63" stroke="url(#route)" strokeWidth="2" />
+
+                <path d="M180 91L257 135L257 225L180 269L103 225V135L180 91Z" fill="#0d1821" stroke="url(#core)" strokeWidth="2" />
+                <path d="M180 112L239 146V214L180 248L121 214V146L180 112Z" fill="#071017" stroke="#58a6ff" strokeOpacity="0.42" />
+                <path d="M180 133L221 157V203L180 227L139 203V157L180 133Z" fill="url(#core)" fillOpacity="0.12" stroke="url(#core)" strokeWidth="2" />
+
+                <path d="M160 171L180 151L200 171" stroke="#7ee787" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M160 190L180 210L200 190" stroke="#22d3ee" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="180" cy="180" r="6" fill="#f0f6fc" />
+                <circle cx="180" cy="180" r="13" stroke="#f0f6fc" strokeOpacity="0.32" />
+
+                <g fill="#0d1117" stroke="#22d3ee" strokeWidth="2">
+                  <rect x="164" y="26" width="32" height="32" rx="8" />
+                  <rect x="288" y="48" width="32" height="32" rx="8" />
+                  <rect x="311" y="164" width="32" height="32" rx="8" />
+                  <rect x="288" y="280" width="32" height="32" rx="8" />
+                  <rect x="164" y="304" width="32" height="32" rx="8" />
+                  <rect x="40" y="280" width="32" height="32" rx="8" />
+                  <rect x="17" y="164" width="32" height="32" rx="8" />
+                  <rect x="40" y="48" width="32" height="32" rx="8" />
+                </g>
+
+                <g fill="#7ee787">
+                  <circle cx="180" cy="42" r="4" />
+                  <circle cx="304" cy="64" r="4" />
+                  <circle cx="327" cy="180" r="4" />
+                  <circle cx="304" cy="296" r="4" />
+                  <circle cx="180" cy="320" r="4" />
+                  <circle cx="56" cy="296" r="4" />
+                  <circle cx="33" cy="180" r="4" />
+                  <circle cx="56" cy="64" r="4" />
+                </g>
+
+                <g fill="#22d3ee">
+                  <circle cx="180" cy="91" r="4" />
+                  <circle cx="241" cy="119" r="4" />
+                  <circle cx="269" cy="180" r="4" />
+                  <circle cx="241" cy="241" r="4" />
+                  <circle cx="180" cy="269" r="4" />
+                  <circle cx="119" cy="241" r="4" />
+                  <circle cx="91" cy="180" r="4" />
+                  <circle cx="119" cy="119" r="4" />
+                </g>
+              </svg>
+
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  left: '18px',
+                  display: 'flex',
+                  color: '#6e7681',
+                  fontSize: '14px',
+                  letterSpacing: '0.16em',
+                }}
+              >
+                AGENT NETWORK / 01
               </div>
-              {data.focusAreas.map((area, index) => (
-                <div
-                  key={area}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '13px',
-                    color: index === 0 ? '#7ee787' : '#c9d1d9',
-                    fontSize: '22px',
-                    marginBottom: index === data.focusAreas.length - 1 ? 0 : '18px',
-                  }}
-                >
-                  <span style={{ color: index === 0 ? '#3fb950' : '#22d3ee' }}>{'>'}</span>
-                  {area}
-                </div>
-              ))}
-              <div style={{ display: 'flex', width: '100%', height: '1px', background: '#21262d', margin: '26px 0 20px' }} />
-              <div style={{ display: 'flex', color: '#58a6ff', fontSize: '17px' }}>
-                building / shipping / learning
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '12px',
+                  right: '18px',
+                  display: 'flex',
+                  gap: '8px',
+                  color: '#7ee787',
+                  fontSize: '15px',
+                }}
+              >
+                <span style={{ color: '#22d3ee' }}>{'<'}</span>
+                plan / tools / memory / verify
+                <span style={{ color: '#22d3ee' }}>{'/>'}</span>
               </div>
             </div>
           </div>
