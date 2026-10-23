@@ -152,6 +152,28 @@ export default function Home() {
           </TerminalBlock>
         )}
 
+        <TerminalBlock
+          command={`curl github.com/users/${data.openSource.username}/contributions`}
+          id="github-activity"
+        >
+          <a
+            href={`https://github.com/${data.openSource.username}?tab=overview`}
+            className="contributionChart"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${data.openSource.username}'s GitHub profile`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://ghchart.rshah.org/64d98b/${data.openSource.username}`}
+              alt={`${data.openSource.username}'s GitHub contribution chart for the last year`}
+              width="663"
+              height="104"
+              loading="lazy"
+            />
+          </a>
+        </TerminalBlock>
+
         {/* Prompt cursor */}
         <TerminalBlock showCursor />
       </Terminal>

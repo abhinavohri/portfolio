@@ -591,6 +591,19 @@ body {
   gap: 0.5rem;
 }
 
+.contributionChart {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.contributionChart img {
+  display: block;
+  width: 100%;
+  min-width: 663px;
+  height: auto;
+}
+
 .orgCard {
   background: transparent;
   border: none;
