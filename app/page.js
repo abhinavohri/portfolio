@@ -174,6 +174,18 @@ export default function Home() {
           </a>
         </TerminalBlock>
 
+        <TerminalBlock command={`contact --email ${data.email}`} id="contact">
+          <div className="contactCta">
+            <p className="outputText">Have a project or role in mind? Send me an email.</p>
+            <a
+              href={`mailto:${data.email}?subject=Portfolio%20inquiry`}
+              className="contactButton"
+            >
+              Send email ↗
+            </a>
+          </div>
+        </TerminalBlock>
+
         {/* Prompt cursor */}
         <TerminalBlock showCursor />
       </Terminal>

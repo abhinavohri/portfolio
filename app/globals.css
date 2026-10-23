@@ -604,6 +604,30 @@ body {
   height: auto;
 }
 
+.contactCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contactButton {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s, background 0.15s;
+}
+
+.contactButton:hover,
+.contactButton:focus-visible {
+  color: var(--bg-terminal);
+  background: var(--accent);
+}
+
 .orgCard {
   background: transparent;
   border: none;
