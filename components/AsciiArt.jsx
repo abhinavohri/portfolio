@@ -35,7 +35,7 @@ const COLORS = [
 
 export default function AsciiArt() {
     return (
-        <pre className="asciiArt">
+        <pre className="asciiArt" aria-hidden="true">
             {ABHINAV_ART.map((line, i) => (
                 <span key={`a-${i}`} style={{ color: COLORS[i % COLORS.length] }}>
                     {line}

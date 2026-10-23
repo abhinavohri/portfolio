@@ -8,10 +8,36 @@ import AsciiArt from '@/components/AsciiArt';
 import ContributionChart from '@/components/ContributionChart';
 import TerminalNavbar from '@/components/TerminalNavbar';
 import Typewriter from '@/components/Typewriter';
+import { siteUrl } from '@/lib/site';
 
 export default function Home() {
+  const profileJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: siteUrl.origin,
+    mainEntity: {
+      '@id': `${siteUrl.origin}/#person`,
+      '@type': 'Person',
+      name: data.name,
+      alternateName: data.openSource.username,
+      description: data.description,
+      image: `${siteUrl.origin}/pixel-avatar.png`,
+      url: siteUrl.origin,
+      jobTitle: data.role,
+      knowsAbout: data.skills,
+      sameAs: data.socials.map((social) => social.url),
+      worksFor: data.experience
+        .filter((experience) => experience.current)
+        .map((experience) => ({ '@type': 'Organization', name: experience.company })),
+    },
+  };
+
   return (
-    <div className="terminalPage">
+    <main className="terminalPage">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd).replace(/</g, '\\u003c') }}
+      />
       <Terminal title={`${data.openSource.username}@portfolio`} path="~/about">
         <TerminalNavbar />
         {/* Welcome / whoami */}
@@ -19,9 +45,10 @@ export default function Home() {
           <div className="heroIdentity">
             <div className="heroCopy">
               <AsciiArt />
-              <div className="roleContainer">
+              <h1 className="roleContainer">
+                <span className="srOnly">{data.name}. </span>
                 <span className="rolePrefix">Role:</span> <span className="roleText">{data.role}</span>
-              </div>
+              </h1>
               <p className="outputText">
                 <Typewriter text={data.tagline} delay={500} />
               </p>
@@ -189,6 +216,6 @@ export default function Home() {
         {/* Prompt cursor */}
         <TerminalBlock showCursor />
       </Terminal>
-    </div>
+    </main>
   );
 }

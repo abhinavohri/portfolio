@@ -1,22 +1,29 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
+
+const subscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
+function getPreferredTheme() {
+    if (typeof window === 'undefined') {
+        return false;
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
 
 export default function ThemeToggle() {
-    const [isDark, setIsDark] = useState(false);
-    const [mounted, setMounted] = useState(false);
+    const [isDark, setIsDark] = useState(getPreferredTheme);
+    const mounted = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
 
     useEffect(() => {
-        setMounted(true);
-        // Check for saved theme preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            setIsDark(true);
-            document.documentElement.setAttribute('data-theme', 'dark');
+        if (mounted) {
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
         }
-    }, []);
+    }, [isDark, mounted]);
 
     const toggleTheme = () => {
         const newTheme = !isDark;

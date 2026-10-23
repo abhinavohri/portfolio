@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Scanline from "@/components/Scanline";
 import data from "@/data/data.json";
+import { isPreview, siteUrl } from "@/lib/site";
 
 
 const jetbrainsMono = JetBrains_Mono({
@@ -11,8 +12,33 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: `${data.name} | ${data.role}`,
+  metadataBase: siteUrl,
+  title: {
+    default: `${data.name} | ${data.role}`,
+    template: `%s | ${data.name}`,
+  },
   description: data.description,
+  applicationName: `${data.name} Portfolio`,
+  authors: [{ name: data.name, url: '/' }],
+  creator: data.name,
+  category: 'technology',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'profile',
+    url: '/',
+    title: `${data.name} | ${data.role}`,
+    description: data.description,
+    siteName: `${data.name} Portfolio`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${data.name} | ${data.role}`,
+    description: data.description,
+  },
+  robots: {
+    index: !isPreview,
+    follow: !isPreview,
+  },
 };
 
 export default function RootLayout({ children }) {

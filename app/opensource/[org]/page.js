@@ -19,10 +19,17 @@ export async function generateMetadata({ params }) {
   const organization = organizations.find((name) => name.toLowerCase() === org.toLowerCase());
 
   return {
-    title: organization ? `${organization} contributions | ${data.name}` : `Open-source contributions | ${data.name}`,
+    title: organization ? `${organization} contributions` : 'Open-source contributions',
     description: organization
       ? `Open-source pull requests by ${data.name} for ${organization}.`
       : `Open-source contributions by ${data.name}.`,
+    alternates: { canonical: `/opensource/${org.toLowerCase()}` },
+    openGraph: organization ? {
+      type: 'website',
+      url: `/opensource/${org.toLowerCase()}`,
+      title: `${organization} contributions | ${data.name}`,
+      description: `Open-source pull requests by ${data.name} for ${organization}.`,
+    } : undefined,
   };
 }
 
