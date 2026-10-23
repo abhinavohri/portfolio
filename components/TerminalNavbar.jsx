@@ -12,6 +12,7 @@ export default function TerminalNavbar() {
         { id: 'experience', label: 'experience', shortcut: '3' },
         { id: 'projects', label: 'projects', shortcut: '4' },
         { id: 'opensource', label: 'opensource', shortcut: '5' },
+        { id: 'contact', label: 'contact', shortcut: '6' },
     ];
 
     const handleNavClick = (e, id) => {
