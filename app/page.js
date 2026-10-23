@@ -165,7 +165,7 @@ export default function Home() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://ghchart.rshah.org/64d98b/${data.openSource.username}`}
+              src={`https://ghchart.rshah.org/${data.openSource.username}`}
               alt={`${data.openSource.username}'s GitHub contribution chart for the last year`}
               width="663"
               height="104"
