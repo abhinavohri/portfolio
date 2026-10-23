@@ -12,7 +12,7 @@ import Typewriter from '@/components/Typewriter';
 export default function Home() {
   return (
     <div className="terminalPage">
-      <Terminal title="abhinav@portfolio" path="~/about">
+      <Terminal title={`${data.openSource.username}@portfolio`} path="~/about">
         <TerminalNavbar />
         {/* Welcome / whoami */}
         <TerminalBlock command="whoami">
@@ -20,15 +20,15 @@ export default function Home() {
             <div className="heroCopy">
               <AsciiArt />
               <div className="roleContainer">
-                <span className="rolePrefix">Role:</span> <span className="roleText">Full Stack Developer</span>
+                <span className="rolePrefix">Role:</span> <span className="roleText">{data.role}</span>
               </div>
               <p className="outputText">
-                <Typewriter text={data.tagline} speed={40} delay={500} />
+                <Typewriter text={data.tagline} delay={500} />
               </p>
             </div>
             <Image
               src="/pixel-avatar.png"
-              alt="Pixel art avatar of Abhinav working at a laptop"
+              alt={`Pixel art avatar of ${data.name} working at a laptop`}
               className="pixelAvatar"
               width={240}
               height={200}
@@ -40,7 +40,7 @@ export default function Home() {
         {/* About */}
         <TerminalBlock command="cat about.txt" id="about">
           <p className="outputText">
-             <Typewriter text={data.description} speed={20} delay={2000} />
+             <Typewriter text={data.description} delay={1000} />
           </p>
         </TerminalBlock>
 

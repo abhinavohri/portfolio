@@ -2,6 +2,7 @@ import { JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Scanline from "@/components/Scanline";
+import data from "@/data/data.json";
 
 
 const jetbrainsMono = JetBrains_Mono({
@@ -10,8 +11,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Abhinav Ohri | Developer",
-  description: "Full-stack developer portfolio",
+  title: `${data.name} | ${data.role}`,
+  description: data.description,
 };
 
 export default function RootLayout({ children }) {

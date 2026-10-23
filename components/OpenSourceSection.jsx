@@ -1,35 +1,11 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import OrgCard from './OrgCard';
-import { fetchGitHubData } from '@/lib/github';
+import { getGitHubData } from '@/lib/github';
 
-/**
- * Open Source Contributions Section
- * Fetches org data dynamically from GitHub
- */
-export default function OpenSourceSection({ config }) {
+export default async function OpenSourceSection({ config }) {
   const { username, repos } = config;
-  const [orgs, setOrgs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { orgs } = await getGitHubData(repos, username);
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const data = await fetchGitHubData(repos, username);
-        setOrgs(data.orgs || []);
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadData();
-  }, [repos, username]);
-
-  // Don't render if no orgs with PRs
-  if (!loading && orgs.length === 0) {
+  if (!orgs.length) {
     return null;
   }
 
@@ -50,24 +26,9 @@ export default function OpenSourceSection({ config }) {
   return (
     <section>
       <div className="orgGrid">
-        {loading ? (
-          // Loading skeleton
-          [1, 2, 3].map(i => (
-            <div key={i} className="orgCard" style={{ opacity: 0.5 }}>
-              <div className="orgCardHeader">
-                <div className="skeleton" style={{ width: 42, height: 42, borderRadius: 10 }}></div>
-                <div className="skeleton" style={{ width: 100, height: 20 }}></div>
-              </div>
-            </div>
-          ))
-        ) : (
-          rankedOrgs.map((org) => (
-            <OrgCard
-              key={org.owner}
-              org={org}
-            />
-          ))
-        )}
+        {rankedOrgs.map((org) => (
+          <OrgCard key={org.owner} org={org} />
+        ))}
       </div>
     </section>
   );

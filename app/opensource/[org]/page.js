@@ -1,48 +1,51 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import data from '@/data/data.json';
 import Terminal from '@/components/Terminal';
 import TerminalBlock from '@/components/TerminalBlock';
+import { getGitHubData } from '@/lib/github';
 
-export default function OrgDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const orgSlug = params.org;
-  
-  const [orgData, setOrgData] = useState(null);
-  const [loading, setLoading] = useState(true);
+const organizations = [...new Set(data.openSource.repos.map((repo) => repo.split('/')[0]))];
 
-  useEffect(() => {
-    const cached = sessionStorage.getItem(`os-${orgSlug}`);
-    if (cached) {
-      setOrgData(JSON.parse(cached));
-      setLoading(false);
-    } else {
-      router.push('/');
-    }
-  }, [orgSlug, router]);
+export const revalidate = 3600;
 
-  if (loading || !orgData) {
-    return (
-      <div className="terminalPage">
-        <Terminal title="loading..." path="~/opensource">
-          <TerminalBlock command="loading...">
-            <div className="skeleton" style={{ height: 100 }}></div>
-          </TerminalBlock>
-        </Terminal>
-      </div>
-    );
+export function generateStaticParams() {
+  return organizations.map((org) => ({ org: org.toLowerCase() }));
+}
+
+export async function generateMetadata({ params }) {
+  const { org } = await params;
+  const organization = organizations.find((name) => name.toLowerCase() === org.toLowerCase());
+
+  return {
+    title: organization ? `${organization} contributions | ${data.name}` : `Open-source contributions | ${data.name}`,
+    description: organization
+      ? `Open-source pull requests by ${data.name} for ${organization}.`
+      : `Open-source contributions by ${data.name}.`,
+  };
+}
+
+export default async function OrgDetailPage({ params }) {
+  const { org: orgSlug } = await params;
+  const organization = organizations.find((name) => name.toLowerCase() === orgSlug.toLowerCase());
+
+  if (!organization) {
+    notFound();
   }
 
+  const { orgs } = await getGitHubData(data.openSource.repos, data.openSource.username);
+  const orgData = orgs.find((org) => org.owner.toLowerCase() === orgSlug.toLowerCase()) || {
+    owner: organization,
+    info: { name: organization, avatar: '' },
+    stats: {},
+    prs: [],
+  };
   const { owner, info, stats, prs } = orgData;
 
   return (
     <div className="terminalPage">
-      <Terminal title={`${owner}`} path="~/opensource">
-        {/* Back link */}
+      <Terminal title={owner} path="~/opensource">
         <div className="terminalBlock">
           <Link href="/" className="cmdLine cmdLink">
             <span className="prompt">←</span>
@@ -50,7 +53,6 @@ export default function OrgDetailPage() {
           </Link>
         </div>
 
-        {/* Org Header */}
         <TerminalBlock command={`cat ${owner.toLowerCase()}.json | jq '.info'`}>
           <div className="orgDetailHeader">
             {info?.avatar ? (
@@ -75,32 +77,30 @@ export default function OrgDetailPage() {
           </div>
         </TerminalBlock>
 
-        {/* PR List */}
-        <TerminalBlock command={`gh pr list --repo ${owner}/* --author me`}>
-          {prs && prs.length > 0 ? (
+        <TerminalBlock command={`gh pr list --repo ${owner}/* --author ${data.openSource.username}`}>
+          {prs.length ? (
             <div className="prList">
-              {prs.map((pr) => (
-                <a 
-                  key={pr.id} 
-                  href={pr.url} 
-                  target="_blank" 
+              {prs.map((pullRequest) => (
+                <a
+                  key={pullRequest.id}
+                  href={pullRequest.url}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="prItem"
                 >
-                  <span className={`prStatus ${pr.merged ? 'merged' : pr.state}`}>
-                    {pr.merged ? '⬤' : pr.state === 'open' ? '○' : '⊘'}
+                  <span className={`prStatus ${pullRequest.merged ? 'merged' : pullRequest.state}`}>
+                    {pullRequest.merged ? '⬤' : pullRequest.state === 'open' ? '○' : '⊘'}
                   </span>
-                  <span className="prTitle">{pr.title}</span>
-                  <span className="prRepo">#{pr.number} · {pr.repo?.split('/')[1]}</span>
+                  <span className="prTitle">{pullRequest.title}</span>
+                  <span className="prRepo">#{pullRequest.number} · {pullRequest.repo?.split('/')[1]}</span>
                 </a>
               ))}
             </div>
           ) : (
-            <p className="outputText">No pull requests found</p>
+            <p className="outputText">GitHub contribution data is temporarily unavailable.</p>
           )}
         </TerminalBlock>
 
-        {/* Cursor */}
         <TerminalBlock showCursor />
       </Terminal>
     </div>
