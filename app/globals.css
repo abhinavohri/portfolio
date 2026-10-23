@@ -599,6 +599,8 @@ body {
   display: block;
   max-width: 100%;
   overflow-x: auto;
+  color: var(--text-secondary);
+  text-decoration: none;
 }
 
 .contributionChart img {
@@ -607,6 +609,37 @@ body {
   min-width: 663px;
   height: auto;
 }
+
+.contributionFooter,
+.contributionLegend {
+  display: flex;
+  align-items: center;
+}
+
+.contributionFooter {
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 663px;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.contributionLegend {
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.contributionLevel {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.contributionLevel0 { background: #eeeeee; }
+.contributionLevel1 { background: #c6e48b; }
+.contributionLevel2 { background: #7bc96f; }
+.contributionLevel3 { background: #239a3b; }
+.contributionLevel4 { background: #196127; }
 
 .contactCta {
   display: flex;

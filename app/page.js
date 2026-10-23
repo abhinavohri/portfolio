@@ -169,6 +169,16 @@ export default function Home() {
               height="104"
               loading="lazy"
             />
+            <span className="contributionFooter">
+              <span>{data.openSource.contributionsLastYear.toLocaleString('en-US')} contributions in the last year</span>
+              <span className="contributionLegend" aria-label="Contribution activity from less to more">
+                <span>Less</span>
+                {[0, 1, 2, 3, 4].map((level) => (
+                  <span key={level} className={`contributionLevel contributionLevel${level}`} aria-hidden="true" />
+                ))}
+                <span>More</span>
+              </span>
+            </span>
           </a>
         </TerminalBlock>
 
