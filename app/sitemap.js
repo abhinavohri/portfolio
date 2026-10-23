@@ -1,4 +1,5 @@
 import data from '@/data/data.json';
+import avatar from '@/data/assets/avatar.png';
 import { siteUrl } from '@/lib/site';
 
 export default function sitemap() {
@@ -7,7 +8,7 @@ export default function sitemap() {
   return [
     {
       url: siteUrl.origin,
-      images: [`${siteUrl.origin}/pixel-avatar.png`],
+      images: [new URL(avatar.src, siteUrl).toString()],
     },
     ...organizations.map((organization) => ({
       url: `${siteUrl.origin}/opensource/${organization}`,

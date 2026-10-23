@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Scanline from "@/components/Scanline";
 import data from "@/data/data.json";
+import favicon from "@/data/assets/favicon.png";
 import { isPreview, siteUrl } from "@/lib/site";
 
 
@@ -23,6 +24,10 @@ export const metadata = {
   creator: data.name,
   category: 'technology',
   alternates: { canonical: '/' },
+  icons: {
+    icon: favicon.src,
+    apple: favicon.src,
+  },
   openGraph: {
     type: 'profile',
     url: '/',

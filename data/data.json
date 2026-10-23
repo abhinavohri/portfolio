@@ -152,7 +152,6 @@
     {
       "name": "VectorSearch",
       "description": "A WordPress AI Plugin with RAG system using Gemini LLMs for semantic indexing. Features Hybrid Search engine using Reciprocal Rank Fusion to merge keyword matching with vector-based cosine similarity.",
-      "coverImage": "/projects/vectorsearch.png",
       "githubUrl": "https://github.com/abhinavohri/VectorSearch",
       "liveUrl": null,
       "techStack": [
@@ -165,7 +164,6 @@
     {
       "name": "RiskScan - DeFi Dashboard",
       "description": "DeFi risk monitoring dashboard with interactive data visualizations for protocol solvency, liquidation heatmaps, and oracle health. Uses live TVL data with simulated granular risk metrics.",
-      "coverImage": "/projects/defi_dashboard.png",
       "githubUrl": "https://github.com/abhinavohri/risk-dashboard",
       "liveUrl": "https://risk-dashboard-eight.vercel.app",
       "techStack": [
@@ -178,7 +176,6 @@
     {
       "name": "AI-Powered Recruitment Suite",
       "description": "End-to-end recruitment platform automating hiring workflows with intelligent REST APIs for scheduling, interviewer matching, resume parsing, and personalized candidate feedback.",
-      "coverImage": "/projects/recruitment_suite.png",
       "githubUrl": null,
       "liveUrl": null,
       "techStack": [
@@ -189,7 +186,7 @@
       ]
     }
   ],
-  "resumeUrl": "/AbhinavOhri(Resume).pdf",
+  "resumeUrl": "/resume",
   "openSource": {
     "username": "abhinavohri",
     "contributionsLastYear": 1323,

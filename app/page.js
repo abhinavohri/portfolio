@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import data from '@/data/data.json';
+import avatar from '@/data/assets/avatar.png';
 import OpenSourceSection from '@/components/OpenSourceSection';
 import TechIcon from '@/components/TechIcon';
 import Terminal from '@/components/Terminal';
@@ -21,7 +22,7 @@ export default function Home() {
       name: data.name,
       alternateName: data.openSource.username,
       description: data.description,
-      image: `${siteUrl.origin}/pixel-avatar.png`,
+      image: new URL(avatar.src, siteUrl).toString(),
       url: siteUrl.origin,
       jobTitle: data.role,
       knowsAbout: data.skills,
@@ -54,7 +55,7 @@ export default function Home() {
               </p>
             </div>
             <Image
-              src="/pixel-avatar.png"
+              src={avatar}
               alt={`Pixel art avatar of ${data.name} working at a laptop`}
               className="pixelAvatar"
               width={240}

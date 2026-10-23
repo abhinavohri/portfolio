@@ -1,4 +1,5 @@
 import data from '@/data/data.json';
+import favicon from '@/data/assets/favicon.png';
 
 export default function manifest() {
   return {
@@ -10,8 +11,8 @@ export default function manifest() {
     background_color: '#010409',
     theme_color: '#0d1117',
     icons: [{
-      src: '/icon.png',
-      sizes: '520x520',
+      src: favicon.src,
+      sizes: 'any',
       type: 'image/png',
     }],
   };

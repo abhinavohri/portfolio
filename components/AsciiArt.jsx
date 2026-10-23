@@ -1,51 +1,13 @@
-/**
- * AsciiArt - Colorful filled ASCII art component
- * Uses block characters (█) for filled look like Gemini CLI
- */
-
-// Block-style ASCII art for "ABHINAV"
-const ABHINAV_ART = [
-    '█████╗ ██████╗ ██╗  ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗',
-    '██╔══██╗██╔══██╗██║  ██║██║████╗  ██║██╔══██╗██║   ██║',
-    '███████║██████╔╝███████║██║██╔██╗ ██║███████║██║   ██║',
-    '██╔══██║██╔══██╗██╔══██║██║██║╚██╗██║██╔══██║╚██╗ ██╔╝',
-    '██║  ██║██████╔╝██║  ██║██║██║ ╚████║██║  ██║ ╚████╔╝ ',
-    '╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ',
-];
-
-// Block-style ASCII art for "OHRI"
-const OHRI_ART = [
-    ' ██████╗ ██╗  ██╗██████╗ ██╗',
-    '██╔═══██╗██║  ██║██╔══██╗██║',
-    '██║   ██║███████║██████╔╝██║',
-    '██║   ██║██╔══██║██╔══██╗██║',
-    '╚██████╔╝██║  ██║██║  ██║██║',
-    ' ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝',
-];
-
-// Cyan/Teal gradient - cleaner, more professional
-const COLORS = [
-    '#22d3ee', // Bright Cyan
-    '#06b6d4', // Cyan
-    '#14b8a6', // Teal
-    '#10b981', // Emerald
-    '#34d399', // Light Emerald
-    '#6ee7b7', // Mint
-];
+import art from '@/data/ascii-art.json';
 
 export default function AsciiArt() {
-    return (
-        <pre className="asciiArt" aria-hidden="true">
-            {ABHINAV_ART.map((line, i) => (
-                <span key={`a-${i}`} style={{ color: COLORS[i % COLORS.length] }}>
-                    {line}
-                </span>
-            ))}
-            {OHRI_ART.map((line, i) => (
-                <span key={`o-${i}`} style={{ color: COLORS[(i + 2) % COLORS.length] }}>
-                    {line}
-                </span>
-            ))}
-        </pre>
-    );
+  return (
+    <pre className="asciiArt" aria-hidden="true">
+      {art.lines.map((line, index) => (
+        <span key={index} style={{ color: art.colors[index % art.colors.length] }}>
+          {line}
+        </span>
+      ))}
+    </pre>
+  );
 }
