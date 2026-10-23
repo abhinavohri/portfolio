@@ -4,6 +4,7 @@ import TechIcon from '@/components/TechIcon';
 import Terminal from '@/components/Terminal';
 import TerminalBlock from '@/components/TerminalBlock';
 import AsciiArt from '@/components/AsciiArt';
+import ContributionChart from '@/components/ContributionChart';
 import TerminalNavbar from '@/components/TerminalNavbar';
 import Typewriter from '@/components/Typewriter';
 
@@ -154,32 +155,10 @@ export default function Home() {
           command={`curl github.com/users/${data.openSource.username}/contributions`}
           id="github-activity"
         >
-          <a
-            href={`https://github.com/${data.openSource.username}?tab=overview`}
-            className="contributionChart"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${data.openSource.username}'s GitHub profile`}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://ghchart.rshah.org/${data.openSource.username}`}
-              alt={`${data.openSource.username}'s GitHub contribution chart for the last year`}
-              width="663"
-              height="104"
-              loading="lazy"
-            />
-            <span className="contributionFooter">
-              <span>{data.openSource.contributionsLastYear.toLocaleString('en-US')} contributions in the last year</span>
-              <span className="contributionLegend" aria-label="Contribution activity from less to more">
-                <span>Less</span>
-                {[0, 1, 2, 3, 4].map((level) => (
-                  <span key={level} className={`contributionLevel contributionLevel${level}`} aria-hidden="true" />
-                ))}
-                <span>More</span>
-              </span>
-            </span>
-          </a>
+          <ContributionChart
+            username={data.openSource.username}
+            contributionsLastYear={data.openSource.contributionsLastYear}
+          />
         </TerminalBlock>
 
         <TerminalBlock command={`contact --email ${data.email}`} id="contact">
