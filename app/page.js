@@ -1,17 +1,11 @@
 import data from '@/data/data.json';
 import OpenSourceSection from '@/components/OpenSourceSection';
-import SkillsSection from '@/components/SkillsSection';
 import TechIcon from '@/components/TechIcon';
 import Terminal from '@/components/Terminal';
 import TerminalBlock from '@/components/TerminalBlock';
 import AsciiArt from '@/components/AsciiArt';
 import TerminalNavbar from '@/components/TerminalNavbar';
 import Typewriter from '@/components/Typewriter';
-
-const skills = [...new Set([
-  ...data.experience.flatMap((experience) => experience.tools || []),
-  ...data.projects.flatMap((project) => project.techStack || []),
-])];
 
 export default function Home() {
   return (
@@ -38,7 +32,11 @@ export default function Home() {
 
         {/* Tech Stack */}
         <TerminalBlock command="ls skills/" id="skills">
-          <SkillsSection skills={skills} openSource={data.openSource} />
+          <div className="terminalSkills">
+            {data.skills.map((tech) => (
+              <TechIcon key={tech} tech={tech} showLabel variant="compact" />
+            ))}
+          </div>
         </TerminalBlock>
 
         {/* Links */}

@@ -348,6 +348,10 @@ body {
   color: var(--text-secondary);
 }
 
+[data-theme="dark"] .techLogoMonochrome {
+  filter: invert(1);
+}
+
 /* Terminal Links */
 .terminalLinks {
   display: flex;

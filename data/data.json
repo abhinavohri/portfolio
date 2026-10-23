@@ -2,6 +2,29 @@
   "tagline": "Building cool stuff. Shipping fast. Breaking things (on purpose).",
   "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
   "email": "abhinavohri13@gmail.com",
+  "skills": [
+    "react",
+    "nextjs",
+    "vue",
+    "flutter",
+    "typescript",
+    "javascript",
+    "nodejs",
+    "python",
+    "fastapi",
+    "flask",
+    "langchain",
+    "langgraph",
+    "gemini",
+    "postgresql",
+    "redis",
+    "mongodb",
+    "php",
+    "wordpress",
+    "aws",
+    "googlecloud",
+    "kubernetes"
+  ],
   "socials": [
     {
       "platform": "github",
@@ -113,10 +136,7 @@
       "endDate": "2025",
       "current": false,
       "tools": [
-        "python",
-        "documentation",
-        "testing",
-        "visualization"
+        "python"
       ],
       "highlights": [
         "Tardis: Mentored students in scientific software development focusing on visualization techniques and regression testing",

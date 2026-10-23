@@ -29,6 +29,14 @@ const techIcons = {
     vue: { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
     angular: { name: 'Angular', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
     svelte: { name: 'Svelte', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg' },
+    fastapi: { name: 'FastAPI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+    flask: { name: 'Flask', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', monochrome: true },
+    wordpress: { name: 'WordPress', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg' },
+    googlecloud: { name: 'Google Cloud', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
+    kubernetes: { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg' },
+    langchain: { name: 'LangChain', icon: 'https://api.iconify.design/logos/langchain-icon.svg', monochrome: true },
+    langgraph: { name: 'LangGraph', icon: 'https://api.iconify.design/simple-icons/langgraph.svg', monochrome: true },
+    gemini: { name: 'Gemini', icon: 'https://api.iconify.design/thesvg-color/gemini.svg' },
 };
 
 export default function TechIcon({ tech, showLabel, variant }) {
@@ -39,7 +47,11 @@ export default function TechIcon({ tech, showLabel, variant }) {
         <div className={baseClass}>
             {techData && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={techData.icon} alt="" />
+                <img
+                    src={techData.icon}
+                    alt={showLabel ? '' : techData.name}
+                    className={techData.monochrome ? 'techLogoMonochrome' : undefined}
+                />
             )}
             {(showLabel || !techData) && <span className="techLabel">{techData?.name || tech}</span>}
         </div>
