@@ -1,4 +1,5 @@
 import { JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Scanline from "@/components/Scanline";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <Scanline />
 
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * TerminalBlock - A single command + output block
  * @param {string} command - The command to display (e.g., "cat about.txt")

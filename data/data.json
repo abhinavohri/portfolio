@@ -1,18 +1,7 @@
 {
-  "name": "Abhinav Ohri",
   "tagline": "Building cool stuff. Shipping fast. Breaking things (on purpose).",
   "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
-  "profilePic": "/_.jpeg",
   "email": "abhinavohri13@gmail.com",
-  "techStack": [
-    "nextjs",
-    "react",
-    "javascript",
-    "nodejs",
-    "python",
-    "typescript",
-    "php"
-  ],
   "socials": [
     {
       "platform": "github",
@@ -142,10 +131,10 @@
       "name": "VectorSearch",
       "description": "A WordPress AI Plugin with RAG system using Gemini LLMs for semantic indexing. Features Hybrid Search engine using Reciprocal Rank Fusion to merge keyword matching with vector-based cosine similarity.",
       "coverImage": "/projects/vectorsearch.png",
-      "githubUrl": null,
+      "githubUrl": "https://github.com/abhinavohri/VectorSearch",
       "liveUrl": null,
       "techStack": [
-        "python",
+        "vue",
         "gemini",
         "wordpress",
         "php"
@@ -153,10 +142,10 @@
     },
     {
       "name": "RiskScan - DeFi Dashboard",
-      "description": "Real-time DeFi risk monitoring platform with interactive data visualizations. Tracks protocol solvency, liquidation heatmaps, and live oracle health using Recharts.",
+      "description": "DeFi risk monitoring dashboard with interactive data visualizations for protocol solvency, liquidation heatmaps, and oracle health. Uses live TVL data with simulated granular risk metrics.",
       "coverImage": "/projects/defi_dashboard.png",
-      "githubUrl": null,
-      "liveUrl": null,
+      "githubUrl": "https://github.com/abhinavohri/risk-dashboard",
+      "liveUrl": "https://risk-dashboard-eight.vercel.app",
       "techStack": [
         "nextjs",
         "typescript",
@@ -179,7 +168,6 @@
     }
   ],
   "resumeUrl": "/AbhinavOhri(Resume).pdf",
-  "githubUrl": "",
   "openSource": {
     "username": "abhinavohri",
     "repos": [

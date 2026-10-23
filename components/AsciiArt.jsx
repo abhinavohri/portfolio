@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * AsciiArt - Colorful filled ASCII art component
  * Uses block characters (█) for filled look like Gemini CLI
@@ -35,7 +33,7 @@ const COLORS = [
     '#6ee7b7', // Mint
 ];
 
-export default function AsciiArt({ showSecondName = true }) {
+export default function AsciiArt() {
     return (
         <pre className="asciiArt">
             {ABHINAV_ART.map((line, i) => (
@@ -43,7 +41,7 @@ export default function AsciiArt({ showSecondName = true }) {
                     {line}
                 </span>
             ))}
-            {showSecondName && OHRI_ART.map((line, i) => (
+            {OHRI_ART.map((line, i) => (
                 <span key={`o-${i}`} style={{ color: COLORS[(i + 2) % COLORS.length] }}>
                     {line}
                 </span>

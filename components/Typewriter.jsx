@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function Typewriter({ text, speed = 30, delay = 0, onComplete }) {
+export default function Typewriter({ text, speed = 30, delay = 0 }) {
     const [displayedText, setDisplayedText] = useState('');
     const [started, setStarted] = useState(false);
 
@@ -26,7 +26,6 @@ export default function Typewriter({ text, speed = 30, delay = 0, onComplete }) 
             // Check if we've reached the end
             if (i >= text.length) {
                 clearInterval(timer);
-                if (onComplete) onComplete();
                 return;
             }
 
@@ -38,7 +37,7 @@ export default function Typewriter({ text, speed = 30, delay = 0, onComplete }) 
         }, speed);
 
         return () => clearInterval(timer);
-    }, [started, text, speed, onComplete]);
+    }, [started, text, speed]);
 
     return <span>{displayedText}</span>;
 }

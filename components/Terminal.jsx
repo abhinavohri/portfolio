@@ -1,5 +1,3 @@
-'use client';
-
 import ThemeToggle from './ThemeToggle';
 
 /**
@@ -20,7 +18,7 @@ export default function Terminal({ title = 'terminal', path = '~', children }) {
                     <span>{title}</span>
                     <span className="terminalPath">{path}</span>
                 </div>
-                <div className="terminalHeaderRight">
+                <div>
                     <ThemeToggle />
                 </div>
             </div>

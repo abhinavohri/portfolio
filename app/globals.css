@@ -1,6 +1,3 @@
-/* --- Import Google Fonts (Terminal) --- */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 :root {
   /* Light mode - Classic light terminal */
   --bg-page: #e8e6e3;
@@ -19,7 +16,6 @@
   --current-badge: #1a7f37;
 
   /* Semantic */
-  --success: #1a7f37;
   --github-merged: #8957e5;
   --github-open: #1a7f37;
 }
@@ -124,11 +120,6 @@ body {
   color: var(--text-muted);
 }
 
-.terminalHeaderRight {
-  width: auto;
-  /* Spacer for grid alignment */
-}
-
 /* Terminal Body */
 .terminalBody {
   padding: 1.5rem;
@@ -205,35 +196,6 @@ body {
   .navPrefix {
     display: block;
   }
-}
-
-/* Visitor Counter */
-.visitorCounter {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  border-left: 1px solid var(--border);
-  padding-left: 1rem;
-  display: none;
-  /* Hidden on mobile by default */
-}
-
-@media (min-width: 768px) {
-  .visitorCounter {
-    display: flex;
-  }
-}
-
-.visitorCounter .label {
-  font-weight: 600;
-}
-
-.visitorCounter .count {
-  color: var(--accent);
-  font-family: inherit;
-  letter-spacing: 0.1em;
 }
 
 /* Terminal Block (single command + output) */
@@ -335,53 +297,6 @@ body {
   display: block;
 }
 
-/* Colorful ASCII gradient like Gemini CLI */
-.ascii1 {
-  color: #ff6b6b;
-}
-
-/* Red/Pink */
-.ascii2 {
-  color: #f06595;
-}
-
-/* Magenta */
-.ascii3 {
-  color: #cc5de8;
-}
-
-/* Purple */
-.ascii4 {
-  color: #845ef7;
-}
-
-/* Violet */
-.ascii5 {
-  color: #5c7cfa;
-}
-
-/* Blue */
-
-[data-theme="dark"] .ascii1 {
-  color: #ff8787;
-}
-
-[data-theme="dark"] .ascii2 {
-  color: #f783ac;
-}
-
-[data-theme="dark"] .ascii3 {
-  color: #da77f2;
-}
-
-[data-theme="dark"] .ascii4 {
-  color: #9775fa;
-}
-
-[data-theme="dark"] .ascii5 {
-  color: #748ffc;
-}
-
 /* Terminal Skills Grid */
 .terminalSkills {
   display: flex;
@@ -431,21 +346,6 @@ body {
 
 .techBadge .techLabel {
   color: var(--text-secondary);
-}
-
-.terminalList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-}
-
-.terminalListItem {
-  color: var(--text-primary);
-}
-
-.terminalListItem::before {
-  content: '• ';
-  color: var(--accent);
 }
 
 /* Terminal Links */
@@ -529,15 +429,6 @@ body {
   margin: 0.5rem 0;
 }
 
-.expTool {
-  padding: 0.15rem 0.5rem;
-  background: var(--bg-header);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-}
-
 .expHighlights {
   list-style: none;
   margin-top: 0.5rem;
@@ -585,19 +476,35 @@ body {
 .projectName {
   color: var(--text-primary);
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.projectIcon {
+.projectIdentity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.projectLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.projectLink {
   color: var(--link-color);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
 }
 
-.projectIcon:hover {
+.projectLink:hover,
+.projectLink:focus-visible {
   color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.projectLiveLink {
+  color: var(--current-badge);
 }
 
 .projectDesc {
@@ -610,40 +517,6 @@ body {
 .projectStack {
   color: var(--text-muted);
   font-size: 0.75rem;
-}
-
-/* Open Source Section Override */
-.openSourceSection {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.sectionTitle {
-  display: none;
-}
-
-.orgGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.orgCard {
-  background: transparent;
-  border: none;
-  border-bottom: 1px dashed var(--border);
-  border-radius: 0;
-  padding: 0.5rem 0;
-}
-
-.orgCard:last-child {
-  border-bottom: none;
-}
-
-.orgCard:hover {
-  transform: none;
-  border-color: var(--border);
 }
 
 /* Responsive */
@@ -712,11 +585,6 @@ body {
   height: 16px;
 }
 
-/* === Open Source Section (Terminal Style) === */
-.openSourceSection .sectionTitle {
-  display: none;
-}
-
 .orgGrid {
   display: flex;
   flex-direction: column;
@@ -724,6 +592,9 @@ body {
 }
 
 .orgCard {
+  background: transparent;
+  border: none;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -740,6 +611,7 @@ body {
 
 .orgCard:hover {
   transform: none;
+  border-color: var(--border);
 }
 
 .orgCardHeader {
@@ -861,12 +733,6 @@ svg {
   flex-shrink: 0;
 }
 
-.terminalLink svg,
-.cmdLine svg {
-  width: 14px;
-  height: 14px;
-}
-
 /* Clickable command line (for navigation) */
 .cmdLink {
   text-decoration: none;
@@ -971,18 +837,6 @@ svg {
   opacity: 0.15;
 }
 
-/* Moving scanline bar */
-.scanline {
-  width: 100%;
-  height: 5px;
-  background: rgba(0, 0, 0, 0.4);
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  animation: scanline 8s linear infinite;
-  display: none;
-}
-
 /* Static lines background */
 .scanline-container::before {
   content: " ";
@@ -1011,16 +865,6 @@ svg {
   z-index: 1;
   pointer-events: none;
   animation: flicker 0.15s infinite;
-}
-
-@keyframes scanline {
-  0% {
-    transform: translateY(-100vh);
-  }
-
-  100% {
-    transform: translateY(100vh);
-  }
 }
 
 @keyframes flicker {

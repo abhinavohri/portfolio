@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 // Tech stack icon mappings using devicons CDN
 const techIcons = {
     react: { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -33,32 +31,17 @@ const techIcons = {
     svelte: { name: 'Svelte', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg' },
 };
 
-/**
- * TechIcon component - displays a tech stack icon with optional label
- * @param {string} tech - The key for the tech (e.g., "react", "nodejs")
- * @param {boolean} showLabel - Whether to show the text label (default: false)
- * @param {string} variant - "default" | "badge" | "compact" (default: "default")
- * @param {string} className - Additional CSS classes
- */
-export default function TechIcon({ tech, showLabel = false, variant = 'default', className = '' }) {
+export default function TechIcon({ tech, showLabel, variant }) {
     const techData = techIcons[tech?.toLowerCase()];
-
-    if (!techData) return null;
-
-    const baseClass = variant === 'badge'
-        ? 'techBadge'
-        : variant === 'compact'
-            ? 'techIconCompact'
-            : 'techIcon';
+    const baseClass = variant === 'badge' ? 'techBadge' : 'techIconCompact';
 
     return (
-        <div className={`${baseClass} ${className}`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={techData.icon} alt={techData.name} />
-            {showLabel && <span className="techLabel">{techData.name}</span>}
+        <div className={baseClass}>
+            {techData && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={techData.icon} alt="" />
+            )}
+            {(showLabel || !techData) && <span className="techLabel">{techData?.name || tech}</span>}
         </div>
     );
 }
-
-// Export the tech icons map for direct access if needed
-export { techIcons };
