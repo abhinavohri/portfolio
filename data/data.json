@@ -4,6 +4,11 @@
   "tagline": "Building cool stuff. Shipping fast. Breaking things (on purpose).",
   "description": "Passionate developer with experience in building modern web applications. I love creating elegant solutions to complex problems and continuously learning new technologies.",
   "email": "abhinavohri13@gmail.com",
+  "focusAreas": [
+    "Agentic AI",
+    "Production Systems",
+    "Open Source"
+  ],
   "skills": [
     "react",
     "nextjs",
