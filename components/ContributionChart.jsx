@@ -26,7 +26,7 @@ export default function ContributionChart({ username, contributionsLastYear }) {
           alt={`${username}'s GitHub contribution chart for the last year`}
           width="663"
           height="104"
-          loading="lazy"
+          loading="eager"
           className={status === 'loaded' ? 'isLoaded' : ''}
           onLoad={() => setStatus('loaded')}
           onError={() => setStatus('error')}
