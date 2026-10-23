@@ -269,22 +269,6 @@ body {
   max-width: 70ch;
 }
 
-.terminalTextReveal {
-  animation: terminal-text-reveal 0.4s ease both;
-}
-
-@keyframes terminal-text-reveal {
-  from {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .terminalTextReveal {
-    animation: none;
-  }
-}
-
 .heroIdentity {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 15rem;
@@ -301,7 +285,6 @@ body {
   height: auto;
   image-rendering: pixelated;
 }
-
 
 /* Role / Title Standout */
 .roleContainer {

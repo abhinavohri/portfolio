@@ -51,7 +51,7 @@ export default function Home() {
                 <span className="rolePrefix">Role:</span> <span className="roleText">{data.role}</span>
               </h1>
               <p className="outputText">
-                <Typewriter text={data.tagline} delay={500} />
+                <Typewriter text={data.tagline} speed={40} delay={500} />
               </p>
             </div>
             <Image
@@ -68,7 +68,7 @@ export default function Home() {
         {/* About */}
         <TerminalBlock command="cat about.txt" id="about">
           <p className="outputText">
-             <Typewriter text={data.description} delay={1000} />
+             <Typewriter text={data.description} speed={20} delay={2000} />
           </p>
         </TerminalBlock>
 
