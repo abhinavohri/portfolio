@@ -257,6 +257,23 @@ body {
   max-width: 70ch;
 }
 
+.heroIdentity {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 15rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.pixelAvatar {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
 
 /* Role / Title Standout */
 .roleContainer {
@@ -535,6 +552,16 @@ body {
 
   .asciiArt {
     font-size: 0.4rem;
+  }
+
+  .heroIdentity {
+    grid-template-columns: 1fr;
+  }
+
+  .pixelAvatar {
+    grid-row: 1;
+    width: min(15rem, 70vw);
+    justify-self: center;
   }
 
   .projectsHeader,

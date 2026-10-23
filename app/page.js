@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import data from '@/data/data.json';
 import OpenSourceSection from '@/components/OpenSourceSection';
 import TechIcon from '@/components/TechIcon';
@@ -15,13 +16,25 @@ export default function Home() {
         <TerminalNavbar />
         {/* Welcome / whoami */}
         <TerminalBlock command="whoami">
-          <AsciiArt />
-          <div className="roleContainer">
-            <span className="rolePrefix">Role:</span> <span className="roleText">Full Stack Developer</span>
+          <div className="heroIdentity">
+            <div className="heroCopy">
+              <AsciiArt />
+              <div className="roleContainer">
+                <span className="rolePrefix">Role:</span> <span className="roleText">Full Stack Developer</span>
+              </div>
+              <p className="outputText">
+                <Typewriter text={data.tagline} speed={40} delay={500} />
+              </p>
+            </div>
+            <Image
+              src="/pixel-avatar.png"
+              alt="Pixel art avatar of Abhinav working at a laptop"
+              className="pixelAvatar"
+              width={240}
+              height={200}
+              priority
+            />
           </div>
-          <p className="outputText">
-            <Typewriter text={data.tagline} speed={40} delay={500} />
-          </p>
         </TerminalBlock>
 
         {/* About */}
